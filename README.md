@@ -1,6 +1,6 @@
 # node-js-boiler-plate
 
-A Node.js boilerplate with ES6, ESLint, and Prettier, and Mocha
+A Node.js boilerplate with TypeScript, Express, ES6, ESLint, and Prettier, and Mocha
 
 ## Getting started
 

@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 import { IUser } from "./user.typing";
 import { COLLECTION_NAMES } from "../../mongoose/constants";
+import "../project/project.model";
+import "../page/page.model";
+import "../translationFile/translationFile.model";
 
 //Instanciation de l'objet permettant de definir un schéma.
 const Schema = mongoose.Schema;

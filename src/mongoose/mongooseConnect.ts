@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 import { connectLink } from "../config/mongoose.config";
+import { UserModel } from "../api/user/user.model";
 
 function mongooseConnect() {
   mongoose
     .connect(connectLink)
-    .then((value) => {
+    .then(async (value) => {
       console.log("DB connected successfully :  ");
     })
     .catch((error) => handleInitialConnectionError(error));

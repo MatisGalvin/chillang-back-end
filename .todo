@@ -1,28 +1,8 @@
-Faire une maquette de la BDD
-https://www.figma.com/community/file/976371040144444424
-
 Faire les 4 schémas + models + interfaces et liens
 
-!!!!! ANGLAIS !!!!!!
-Faire une doc avec gitbook avec template product doc + publier la doc
-
-- nom, techno, ( = stack technique )
-- Getting started
-- database architecture + projet
 
 A mettre en place plus tard : Express validator
 https://express-validator.github.io/docs/index.html
 
 A mettre en place plus tard : supertest
 https://rahmanfadhil.com/test-express-with-supertest/
-
-Remplacer les ref string par une conf de mongoose
-genre collection names
-COOLECTION_NAMES {
-
-- ....
-  -....
-  TOUT EN MAJ AVEC UNDERSCORE :
-
-project : "Project"
-}

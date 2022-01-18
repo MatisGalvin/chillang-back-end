@@ -1,7 +1,4 @@
 import mongoose from "mongoose";
-import { TranslationFileModel } from "../api/translationFile/translationFile.model";
-import { UserController } from "../api/user/user.controller";
-import { UserModel } from "../api/user/user.model";
 import { connectLink } from "../config/mongoose.config";
 
 function mongooseConnect() {

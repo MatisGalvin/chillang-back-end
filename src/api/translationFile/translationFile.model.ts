@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { ITranslationFile } from "./translationFile.typing";
+import { COLLECTION_NAMES } from "../../mongoose/constants";
 
 //Instanciation de l'objet permettant de definir un schéma.
 const Schema = mongoose.Schema;
@@ -17,7 +18,7 @@ const TranslationFileSchema = new Schema<ITranslationFile>({
 
 //Création d'un model de Translation basée sur le Schema défini.
 const TranslationFileModel = mongoose.model<ITranslationFile>(
-  "TranslationFile",
+  COLLECTION_NAMES.TRANSLATION_FILE,
   TranslationFileSchema
 );
 

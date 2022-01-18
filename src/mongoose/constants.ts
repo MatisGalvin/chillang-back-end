@@ -1,8 +1,8 @@
 const COLLECTION_NAMES = {
-  PROJECT: "Project",
-  PAGE: "Page",
-  TRANSLATION_FILE: "TranslationFile",
-  USER: "User",
+  PROJECT: "project",
+  PAGE: "page",
+  TRANSLATION_FILE: "translationFile",
+  USER: "user",
 };
 
 export { COLLECTION_NAMES };

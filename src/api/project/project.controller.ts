@@ -6,6 +6,8 @@ export class ProjectController {
     server.get("/projects", this.readAll);
     server.post("/project", this.create);
     server.get("/project/:id", this.read);
+    server.post("/project/update/:id", this.update);
+    server.delete("/project/delete/:id", this.delete);
   }
 
   private async create(req: Request, res: Response) {
@@ -26,5 +28,18 @@ export class ProjectController {
     const { id } = req.params;
     const project = await ProjectService.read(id);
     res.send(project);
+  }
+
+  private async update(req: Request, res: Response) {
+    const { id } = req.params;
+    const project = req.body.project;
+    const updatedProject = await ProjectService.update(id, project);
+    res.send(updatedProject);
+  }
+
+  private async delete(req: Request, res: Response) {
+    const { id } = req.params;
+    const deletedProject = await ProjectService.delete(id);
+    res.send(deletedProject);
   }
 }

@@ -20,4 +20,16 @@ export const ProjectService = {
     const project = await ProjectModel.findById(id);
     return project;
   },
+
+  update: async (id: string, project: IProject) => {
+    const updatedProject = await ProjectModel.findByIdAndUpdate(id, project, {
+      new: true,
+    });
+    return updatedProject;
+  },
+
+  delete: async (id: string) => {
+    const deletedProject = await ProjectModel.findByIdAndRemove(id);
+    return deletedProject;
+  },
 };

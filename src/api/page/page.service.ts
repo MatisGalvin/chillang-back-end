@@ -28,7 +28,7 @@ export const PageService = {
   },
 
   delete: async (id: string) => {
-    const deletedPage = await PageModel.findByIdAndRemove(id);
+    const deletedPage = await PageModel.findByIdAndDelete(id);
     return deletedPage;
   },
 };

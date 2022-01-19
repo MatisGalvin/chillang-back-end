@@ -30,7 +30,6 @@ export class UserController {
       encryptedPassword,
       projects
     );
-    await createdUser.save();
     res.send(createdUser);
   }
 

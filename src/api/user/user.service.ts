@@ -28,7 +28,7 @@ export const UserService = {
     encryptedPassword: string,
     projects: string[]
   ) => {
-    const createdUser = new UserModel({
+    const createdUser = await UserModel.create({
       username: username,
       encryptedPassword: encryptedPassword,
       projects: projects,

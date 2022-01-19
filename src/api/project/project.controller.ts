@@ -15,7 +15,6 @@ export class ProjectController {
     const api_key = req.body.api_key;
     const pages = req.body.pages;
     const createdProject = await ProjectService.create(name, api_key, pages);
-    await createdProject.save();
     res.send(createdProject);
   }
 
@@ -32,7 +31,7 @@ export class ProjectController {
 
   private async update(req: Request, res: Response) {
     const { id } = req.params;
-    const project = req.body.project;
+    const { project } = req.body;
     const updatedProject = await ProjectService.update(id, project);
     res.send(updatedProject);
   }

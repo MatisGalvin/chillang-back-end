@@ -16,4 +16,17 @@ export const UserService = {
 
     return users;
   },
+
+  read: async (id: string) => {
+    const user = await UserModel.findById(id);
+    return user;
+  },
+
+  create: async (username, encryptedPassword) => {
+    const user = new UserModel({
+      username: username,
+      encryptedPassword: encryptedPassword,
+    });
+    return user;
+  },
 };

@@ -28,12 +28,12 @@ export const UserService = {
     encryptedPassword: string,
     projects: string[]
   ) => {
-    const user = new UserModel({
+    const createdUser = new UserModel({
       username: username,
       encryptedPassword: encryptedPassword,
       projects: projects,
     });
-    return user;
+    return createdUser;
   },
 
   update: async (id: string, user: IUser) => {
@@ -41,5 +41,10 @@ export const UserService = {
       new: true,
     });
     return updatedUser;
+  },
+
+  delete: async (id: string) => {
+    const deletedUser = await UserModel.findByIdAndDelete(id);
+    return deletedUser;
   },
 };

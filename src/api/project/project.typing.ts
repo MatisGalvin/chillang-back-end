@@ -1,5 +1,5 @@
 export interface IProject {
   name: string;
-  api_key: string;
+  apiKey: string;
   pages: string[];
 }

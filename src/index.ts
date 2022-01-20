@@ -4,9 +4,9 @@ import { UserController } from "./api/user/user.controller";
 import { ProjectController } from "./api/project/project.controller";
 import { PageController } from "./api/page/page.controller";
 import { TranslationFileController } from "./api/translationFile/translationFile.controller";
+const bodyParser = require("body-parser");
 
 const server = serverConnect();
-const bodyParser = require("body-parser");
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 

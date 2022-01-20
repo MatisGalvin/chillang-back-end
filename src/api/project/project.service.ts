@@ -2,11 +2,11 @@ import { ProjectModel } from "./project.model";
 import { IProject } from "./project.typing";
 
 export const ProjectService = {
-  create: async (name: string, api_key: string, pages: string[]) => {
+  create: async (name: string, apiKey: string, pages: string[]) => {
     const createdProject = await ProjectModel.create({
-      name: name,
-      api_key: api_key,
-      pages: pages,
+      name,
+      apiKey,
+      pages,
     });
     return createdProject;
   },

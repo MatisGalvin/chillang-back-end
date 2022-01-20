@@ -4,8 +4,8 @@ import { IPage } from "./page.typing";
 export const PageService = {
   create: async (name: string, translationFiles: string[]) => {
     const createdPages = await PageModel.create({
-      name: name,
-      translationFiles: translationFiles,
+      name,
+      translationFiles,
     });
     return createdPages;
   },

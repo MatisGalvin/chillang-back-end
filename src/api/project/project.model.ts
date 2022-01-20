@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema<IProject>({
   name: String,
-  api_key: String,
+  apiKey: String,
   pages: [
     {
       type: Schema.Types.ObjectId,

@@ -3,9 +3,9 @@ import { ITranslationFile } from "./translationFile.typing";
 
 export const TranslationFileService = {
   create: async (lang: string, data: string[]) => {
-    const createdTranslationFile = TranslationFileModel.create({
-      lang: lang,
-      data: data,
+    const createdTranslationFile = await TranslationFileModel.create({
+      lang,
+      data,
     });
     return createdTranslationFile;
   },

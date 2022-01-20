@@ -12,9 +12,9 @@ export class ProjectController {
 
   private async create(req: Request, res: Response) {
     const name = req.body.name;
-    const api_key = req.body.api_key;
+    const apiKey = req.body.apiKey;
     const pages = req.body.pages;
-    const createdProject = await ProjectService.create(name, api_key, pages);
+    const createdProject = await ProjectService.create(name, apiKey, pages);
     res.send(createdProject);
   }
 

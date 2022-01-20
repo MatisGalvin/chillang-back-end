@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
-import { connectLink } from "../config/mongoose.config";
 
-function mongooseConnect() {
+function mongooseConnect(link) {
   mongoose
-    .connect(connectLink)
+    .connect(link)
     .then(async (value) => {
       console.log("DB connected successfully :  ");
     })

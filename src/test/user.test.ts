@@ -1,32 +1,43 @@
 import mongoose from "mongoose";
-import { serverConnect } from "../testing/server";
 import { UserController } from "../api/user/user.controller";
 import supertest from "supertest";
 import { UserModel } from "../api/user/user.model";
 import { IUser } from "../api/user/user.typing";
+import { serverConnect } from "../server/serverConnect";
+import { portServer } from "../config/server.config";
+import { connectLinkDb } from "../config/mongoose.config";
 
-let server = serverConnect();
+let server = serverConnect(portServer.test);
+
+beforeAll((done) => {
+  mongoose.connect(connectLinkDb.test, () => {
+    new UserController().listen(server);
+    done();
+  });
+});
 
 beforeEach((done) => {
-  new UserController().listen(server);
-  mongoose.connect("mongodb://localhost:27017/testDB", () => done());
+  mongoose.connection.db.dropDatabase(() => done());
 });
 
-afterEach((done) => {
-  mongoose.connection.db.dropDatabase(() => {
-    mongoose.connection.close(() => done());
+afterAll((done) => {
+  mongoose.connection.close(() => {
+    done();
   });
 });
 
-test("GET /users", async () => {
-  await UserModel.create({
-    username: "test",
-    encryptedPassword: "blablabla",
-  });
-  supertest(server)
-    .get("/users")
-    .expect(200)
-    .then((users: any) => {
-      expect(users[0].username).toEqual("test");
+describe("GET /users", () => {
+  it("should have exactly one user", async () => {
+    await UserModel.create({
+      username: "test",
+      encryptedPassword: "blablabla",
     });
+
+    const response = await supertest(server)
+      .get("/users")
+      .set("Accept", "application/json");
+
+    expect(response.status).toEqual(200);
+    expect((response.body as IUser[])[0].username).toEqual("test");
+  });
 });

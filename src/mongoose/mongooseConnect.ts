@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { connectLink } from "../config/mongoose.config";
-import { UserModel } from "../api/user/user.model";
 
 function mongooseConnect() {
   mongoose

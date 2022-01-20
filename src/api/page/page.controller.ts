@@ -16,8 +16,7 @@ export class PageController {
   }
 
   private async create(req: Request, res: Response) {
-    const name = req.body.name;
-    const translationFiles = req.body.translationFiles;
+    const { name, translationFiles } = req.body;
     const createdPage = await PageService.create(name, translationFiles);
     res.send(createdPage);
   }

@@ -16,8 +16,7 @@ export class TranslationFileController {
   }
 
   private async create(req: Request, res: Response) {
-    const { lang } = req.body;
-    const { data } = req.body;
+    const { lang, data } = req.body;
     const createdTranslationFile = await TranslationFileService.create(
       lang,
       data

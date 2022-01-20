@@ -16,15 +16,13 @@ export class UserController {
   }
 
   private async read(req: Request, res: Response) {
-    const id = req.params.id;
+    const { id } = req.params;
     const user = await UserService.read(id);
     res.send(user);
   }
 
   private async create(req: Request, res: Response) {
-    const username = req.body.username;
-    const encryptedPassword = req.body.encryptedPassword;
-    const projects = req.body.projects;
+    const { username, encryptedPassword, projects } = req.body;
     const createdUser = await UserService.create(
       username,
       encryptedPassword,
@@ -34,8 +32,8 @@ export class UserController {
   }
 
   private async update(req: Request, res: Response) {
-    const id = req.params.id;
-    const user = req.body.user;
+    const { id } = req.params;
+    const { user } = req.body;
     const updatedUser = await UserService.update(id, user);
     res.send(updatedUser);
   }

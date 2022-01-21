@@ -7,11 +7,7 @@ import { TranslationFileController } from "./api/translationFile/translationFile
 import { connectLinkDb } from "./config/mongoose.config";
 import { portServer } from "./config/server.config";
 
-const bodyParser = require("body-parser");
-
 const server = serverConnect(portServer.dev);
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(bodyParser.json());
 
 mongooseConnect(connectLinkDb.dev);
 
@@ -19,3 +15,5 @@ new UserController().listen(server);
 new ProjectController().listen(server);
 new PageController().listen(server);
 new TranslationFileController().listen(server);
+
+export { server };

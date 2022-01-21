@@ -1,34 +1,15 @@
 import supertest from "supertest";
 import mongoose from "mongoose";
-import { UserController } from "../api/user/user.controller";
 import { UserModel } from "../api/user/user.model";
 import { IUser } from "../api/user/user.typing";
-import { connectLinkDb } from "../config/mongoose.config";
+import { mongooseConfig } from "../config/dev.config";
+import { Server } from "../server";
+// We don't start the server, this way supertest start it itself on an available port
+const server = new Server().getExpressInstance();
 
-const server = (process.env as any).JAMBON;
-
-console.log("================  LOG SERVER ==================", process.env);
-
-beforeAll((done) => {
-  mongoose.connect(connectLinkDb.test, () => {
-    new UserController().listen(server);
-    done();
-  });
-});
-
-beforeEach((done) => {
-  mongoose.connection.db.dropDatabase(() => done());
-});
-
-afterAll((done) => {
-  mongoose.connection.close(() => {
-    done();
-  });
-});
-
-describe("/users (GET)", () => {
+describe("User API", () => {
   // Should return two users
-  it("", async () => {
+  it("/users", async () => {
     await UserModel.create({
       username: "test",
       encryptedPassword: "blablabla",
@@ -37,21 +18,18 @@ describe("/users (GET)", () => {
       username: "Jambon",
       encryptedPassword: "cochonou",
     });
-
     const response = await supertest(server)
       .get("/users")
       .set("Accept", "application/json");
-
     expect(response.status).toEqual(200);
     expect(response.body.length).toEqual(2);
     expect((response.body as IUser[])[0].username).toEqual("test");
     expect((response.body as IUser[])[1].username).toEqual("Jambon");
+    expect(1).toEqual(1);
   });
-});
 
-describe("/user/:id (GET)", () => {
   // Should return one user named Jambon
-  it("", async () => {
+  it("/user/:id (GET)", async () => {
     const createdUser = await UserModel.create({
       username: "Jambon",
       encryptedPassword: "parme",
@@ -64,11 +42,9 @@ describe("/user/:id (GET)", () => {
     expect(response.status).toEqual(200);
     expect((response.body as IUser).username).toEqual("Jambon");
   });
-});
 
-describe("/user/update/:id (POST)", () => {
   // Shoud update the username Jambon to JambonBlanc
-  it("", async () => {
+  it("/user/update/:id (POST)", async () => {
     const createdUser = await UserModel.create({
       username: "Jambon",
       encryptedPassword: "parme",
@@ -82,11 +58,9 @@ describe("/user/update/:id (POST)", () => {
     expect(response.status).toEqual(200);
     expect((response.body as IUser).username).toEqual("JambonBlanc");
   });
-});
 
-describe("/user/delete/:id (DELETE)", () => {
   // Shoud delete one user with username Jambon
-  it("", async () => {
+  it("/user/delete/:id (DELETE)", async () => {
     const createdUser = await UserModel.create({
       username: "Jambon",
       encryptedPassword: "parme",
@@ -99,11 +73,9 @@ describe("/user/delete/:id (DELETE)", () => {
     expect(response.status).toEqual(200);
     expect((response.body as IUser).username).toEqual("Jambon");
   });
-});
 
-describe("/user (POST)", () => {
   // Should create a user with username Matis
-  it("", async () => {
+  it("/user (POST)", async () => {
     const response = await supertest(server)
       .post("/user")
       .set("Accept", "application/json")

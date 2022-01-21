@@ -1,32 +1,13 @@
 import supertest from "supertest";
-import mongoose from "mongoose";
-import { ProjectController } from "../api/project/project.controller";
 import { ProjectModel } from "../api/project/project.model";
 import { IProject } from "../api/project/project.typing";
-import { connectLinkDb } from "../config/mongoose.config";
+import { Server } from "../server";
+// We don't start the server, this way supertest start it itself on an available port
+const server = new Server().getExpressInstance();
 
-const server = (process as any).JAMBON;
-
-beforeAll((done) => {
-  mongoose.connect(connectLinkDb.test, () => {
-    new ProjectController().listen(server);
-    done();
-  });
-});
-
-beforeEach((done) => {
-  mongoose.connection.db.dropDatabase(() => done());
-});
-
-afterAll((done) => {
-  mongoose.connection.close(() => {
-    done();
-  });
-});
-
-describe("/projects (GET)", () => {
+describe("Project API", () => {
   // Should return exactly two projects
-  it("", async () => {
+  it("/projects (GET)", async () => {
     await ProjectModel.create({
       name: "Test project",
       apiKey: "clebidon",
@@ -55,11 +36,9 @@ describe("/projects (GET)", () => {
       "61e6d2afbc63fbd022d3a8ab",
     ]);
   });
-});
 
-describe("/project/:id (GET)", () => {
   // Should return one project named Pepouz
-  it("", async () => {
+  it("/project/:id (GET)", async () => {
     const createdProject = await ProjectModel.create({
       name: "Pepouz",
       apiKey: "oklm",
@@ -78,11 +57,9 @@ describe("/project/:id (GET)", () => {
     ]);
     expect(typeof response.body._id).toBe("string");
   });
-});
 
-describe("/project/update/:id (POST)", () => {
   // Should change the name of the project Pepouz to PepouzSurLaPelouz
-  it("", async () => {
+  it("/project/update/:id (POST)", async () => {
     const createdProject = await ProjectModel.create({
       name: "Pepouz",
       apiKey: "oklm",

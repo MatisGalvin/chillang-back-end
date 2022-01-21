@@ -5,10 +5,8 @@ import "../project/project.model";
 import "../page/page.model";
 import "../translationFile/translationFile.model";
 
-//Instanciation de l'objet permettant de definir un schéma.
 const Schema = mongoose.Schema;
 
-//Création d'un schema User
 const UserSchema = new Schema<IUser>({
   username: String,
   encryptedPassword: String,
@@ -20,8 +18,6 @@ const UserSchema = new Schema<IUser>({
   ],
 });
 
-//Création d'un model de User basée sur le Schema défini.
 const UserModel = mongoose.model<IUser>(COLLECTION_NAMES.USER, UserSchema);
 
-//Exportation du model User pour pouvoir y accéder de l'exterieur.
 export { UserModel };

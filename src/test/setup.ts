@@ -1,26 +1,15 @@
-// import mongoose from "mongoose";
-// import { connectLinkDb } from "../config/mongoose.config";
-// import { PageController } from "../api/page/page.controller";
-// import { UserController } from "../api/user/user.controller";
-// import { ProjectController } from "../api/project/project.controller";
+import { serverConfig, mongooseConfig } from "../config/test.config";
+import { Mongoose } from "../mongoose";
+const mongooseDB = new Mongoose(mongooseConfig.DB_URL);
+/*
+  Set up a server + a clean test database for each test file that runs
+*/
+beforeAll((done) => {
+  mongooseDB.connect(() => {
+    mongooseDB.dropAll(() => done());
+  });
+});
 
-// const server = (global.test as any).server;
-
-// beforeAll((done) => {
-//   mongoose.connect(connectLinkDb.test, () => {
-//     new UserController().listen(server);
-//     new PageController().listen(server);
-//     new ProjectController().listen(server);
-//     done();
-//   });
-// });
-
-// beforeEach((done) => {
-//   mongoose.connection.db.dropDatabase(() => done());
-// });
-
-// afterAll((done) => {
-//   mongoose.connection.close(() => {
-//     done();
-//   });
-// });
+afterAll((done) => {
+  mongooseDB.close(() => done());
+});

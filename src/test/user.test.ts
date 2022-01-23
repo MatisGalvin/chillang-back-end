@@ -12,11 +12,9 @@ describe("User API", () => {
   it("/users", async () => {
     await UserModel.create({
       username: "test",
-      encryptedPassword: "blablabla",
     });
     await UserModel.create({
       username: "Jambon",
-      encryptedPassword: "cochonou",
     });
     const response = await supertest(server)
       .get("/users")
@@ -32,7 +30,6 @@ describe("User API", () => {
   it("/user/:id (GET)", async () => {
     const createdUser = await UserModel.create({
       username: "Jambon",
-      encryptedPassword: "parme",
     });
 
     const response = await supertest(server)
@@ -47,7 +44,6 @@ describe("User API", () => {
   it("/user/update/:id (POST)", async () => {
     const createdUser = await UserModel.create({
       username: "Jambon",
-      encryptedPassword: "parme",
     });
 
     const response = await supertest(server)
@@ -79,14 +75,9 @@ describe("User API", () => {
     const response = await supertest(server)
       .post("/user")
       .set("Accept", "application/json")
-      .send({ username: "Matis", encryptedPassword: "motdepasseduturfu" });
-
+      .send({ username: "Matis" });
     expect(response.status).toEqual(200);
     expect((response.body as IUser).username).toEqual("Matis");
-    expect((response.body as IUser).encryptedPassword).toEqual(
-      "motdepasseduturfu"
-    );
     expect(typeof response.body._id).toBe("string");
-    expect((response.body as IUser).projects.length).toEqual(0);
   });
 });

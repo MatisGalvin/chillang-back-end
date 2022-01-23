@@ -22,11 +22,9 @@ export class UserController {
   }
 
   private async create(req: Request, res: Response) {
-    const { username, encryptedPassword, projects } = req.body;
+    const { username } = req.body;
     const createdUser = await UserService.create(
       username,
-      encryptedPassword,
-      projects
     );
     res.send(createdUser);
   }

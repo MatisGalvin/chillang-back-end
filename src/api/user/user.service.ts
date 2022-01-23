@@ -5,15 +5,7 @@ import { IUser } from "./user.typing";
 // readAll()
 export const UserService = {
   readAll: async () => {
-    const users = await UserModel.find({}).populate({
-      path: "projects",
-      populate: {
-        path: "pages",
-        populate: {
-          path: "translationFiles",
-        },
-      },
-    });
+    const users = await UserModel.find({})
 
     return users;
   },
@@ -25,13 +17,9 @@ export const UserService = {
 
   create: async (
     username: string,
-    encryptedPassword: string,
-    projects: string[]
   ) => {
     const createdUser = await UserModel.create({
       username,
-      encryptedPassword,
-      projects,
     });
     return createdUser;
   },

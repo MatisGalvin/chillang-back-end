@@ -2,9 +2,6 @@ import express, { Express } from "express";
 import bodyParser from "body-parser";
 import { Server as HttpServer } from "http";
 import { UserController } from "../api/user/user.controller";
-import { ProjectController } from "../api/project/project.controller";
-import { PageController } from "../api/page/page.controller";
-import { TranslationFileController } from "../api/translationFile/translationFile.controller";
 
 /*
  Class server that use an express server internally
@@ -34,9 +31,6 @@ export class Server {
   // Make a controller able to listen to http requests
   setControllersToListen() {
     new UserController().listen(this.expressServer);
-    new ProjectController().listen(this.expressServer);
-    new PageController().listen(this.expressServer);
-    new TranslationFileController().listen(this.expressServer);
   }
 
   start(onStarted?: () => void): void {

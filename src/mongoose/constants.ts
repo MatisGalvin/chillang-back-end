@@ -1,5 +1,5 @@
 const COLLECTION_NAMES = {
-  USER: "User",
+  CROSSWORD: "Crossword",
 };
 
 export { COLLECTION_NAMES };

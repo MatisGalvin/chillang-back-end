@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { mongooseConfig } from "../config/dev.config";
 
 /**
  * Mongoose class in charge of connecting and showing an error in case of connection failure
@@ -17,7 +18,10 @@ export class Mongoose {
     mongoose
       .connect(this.url)
       .then(async (value) => {
-        this.showLog && console.log("DB connected successfully");
+        this.showLog &&
+          console.log(
+            "DB connected successfully (" + mongooseConfig.DB_URL + ")"
+          );
         onConnected?.();
       })
       .catch((error) =>

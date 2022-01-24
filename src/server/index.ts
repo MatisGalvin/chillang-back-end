@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import bodyParser from "body-parser";
 import { Server as HttpServer } from "http";
-import { UserController } from "../api/user/user.controller";
+import { UserController } from "../api/crossword/crossword.controller";
 
 /*
  Class server that use an express server internally

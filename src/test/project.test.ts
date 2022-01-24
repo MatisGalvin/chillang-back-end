@@ -69,13 +69,52 @@ describe("Project API", () => {
     const response = await supertest(server)
       .post("/project/update/" + createdProject._id)
       .set("Accept", "application/json")
-      .send({ page: { name: "About Page" } });
+      .send({ project: { name: "PepouzSurLaPelouz" } });
 
     expect(response.status).toEqual(200);
-    // expect((response.body as IPage).name).toEqual("About Page");
-    // expect(typeof response.body._id).toBe("string");
-    // expect((response.body as IPage).translationFiles).toEqual([
-    //   "61e6d2afbc63fbd022d3a8ac",
-    // ]);
+    expect((response.body as IProject).name).toEqual("PepouzSurLaPelouz");
+    expect(typeof response.body._id).toBe("string");
+    expect((response.body as IProject).pages).toEqual([
+      "61e6d2afbc63fbd022d3a8ab",
+    ]);
+  });
+
+  // Should delete one project named 'JambonProject'
+  it("/project/delete/:id (DELETE)", async () => {
+    const createdProject = await ProjectModel.create({
+      name: "JambonProject",
+      apiKey: "oklm",
+      pages: ["61e6d2afbc63fbd022d3a8ab"],
+    });
+
+    const response = await supertest(server)
+      .delete("/project/delete/" + createdProject._id)
+      .set("Accept", "application/json");
+
+    expect(response.status).toEqual(200);
+    expect((response.body as IProject).name).toEqual("JambonProject");
+    expect(typeof response.body._id).toBe("string");
+    expect((response.body as IProject).pages).toEqual([
+      "61e6d2afbc63fbd022d3a8ab",
+    ]);
+  });
+
+  // Should create a project named 'JambonProject'
+  it("/project (POST)", async () => {
+    const response = await supertest(server)
+      .post("/project")
+      .set("Accept", "application/json")
+      .send({
+        name: "JambonProject",
+        apiKey: "oklm",
+        pages: ["61e6d2afbc63fbd022d3a8ab"],
+      });
+
+    expect(response.status).toEqual(200);
+    expect((response.body as IProject).name).toEqual("JambonProject");
+    expect(typeof response.body._id).toBe("string");
+    expect((response.body as IProject).pages).toEqual([
+      "61e6d2afbc63fbd022d3a8ab",
+    ]);
   });
 });

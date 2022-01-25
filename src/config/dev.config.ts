@@ -7,5 +7,5 @@ export const mongooseConfig = Object.freeze({
 });
 
 export const serverConfig = Object.freeze({
-  PORT: 3000,
+  PORT: 3090,
 });

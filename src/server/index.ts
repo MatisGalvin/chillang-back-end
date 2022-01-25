@@ -6,6 +6,8 @@ import { ProjectController } from "../api/project/project.controller";
 import { PageController } from "../api/page/page.controller";
 import { TranslationFileController } from "../api/translationFile/translationFile.controller";
 
+const cors = require("cors");
+
 /*
  Class server that use an express server internally
  This class can start, stop the server.
@@ -29,6 +31,7 @@ export class Server {
   setupMiddlewares() {
     this.expressServer.use(bodyParser.urlencoded({ extended: false }));
     this.expressServer.use(bodyParser.json());
+    this.expressServer.use(cors());
   }
 
   // Make a controller able to listen to http requests

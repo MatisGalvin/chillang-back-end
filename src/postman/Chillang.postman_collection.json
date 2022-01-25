@@ -65,11 +65,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/translationFile/61e82d1a79861008e0aaae2e",
+							"raw": "localhost:{{port}}/translationFile/61e82d1a79861008e0aaae2e",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"translationFile",
 								"61e82d1a79861008e0aaae2e"
@@ -96,11 +96,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/translationFiles",
+							"raw": "localhost:{{port}}/translationFiles",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"translationFiles"
 							],
@@ -135,11 +135,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/translationFile/update/61e82d1a79861008e0aaae2e",
+							"raw": "localhost:{{port}}/translationFile/update/61e82d1a79861008e0aaae2e",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"translationFile",
 								"update",
@@ -176,15 +176,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/translationFile/delete/61e9368fcd7c2712c87db788",
+							"raw": "localhost:{{port}}/translationFile/delete/61ee8071899b0369fa250d33",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"translationFile",
 								"delete",
-								"61e9368fcd7c2712c87db788"
+								"61ee8071899b0369fa250d33"
 							],
 							"query": [
 								{
@@ -214,7 +214,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Eva\",\r\n    \"encryptedPassword\": \"motdepasse\",\r\n    \"projects\": [\r\n        \"61e81c916c2c04a594b73b2d\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"username\": \"Matis\",\r\n    \"encryptedPassword\": \"testmdp\",\r\n    \"projects\": [\r\n        \"61e81c916c2c04a594b73b2d\"\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -222,11 +222,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/user",
+							"raw": "localhost:{{port}}/user",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"user"
 							]
@@ -286,11 +286,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/user/update/61e80f089810ec398b36e8f2",
+							"raw": "localhost:{{port}}/user/update/61e80f089810ec398b36e8f2",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"user",
 								"update",
@@ -306,15 +306,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/user/delete/61e92c6cd31a70a51c45b494",
+							"raw": "localhost:{{port}}/user/delete/61ea82103d3c700a95520650",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"user",
 								"delete",
-								"61e92c6cd31a70a51c45b494"
+								"61ea82103d3c700a95520650"
 							]
 						}
 					},
@@ -340,11 +340,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/project",
+							"raw": "localhost:{{port}}/project",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"project"
 							]
@@ -358,11 +358,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/project/61e92dabd31a70a51c45b497",
+							"raw": "localhost:{{port}}/project/61e92dabd31a70a51c45b497",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"project",
 								"61e92dabd31a70a51c45b497"
@@ -377,11 +377,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/projects",
+							"raw": "localhost:{{port}}/projects",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"projects"
 							]
@@ -404,11 +404,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/project/update/61e930ffcd7c2712c87db778",
+							"raw": "localhost:{{port}}/project/update/61e930ffcd7c2712c87db778",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"project",
 								"update",
@@ -424,11 +424,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/project/delete/61e930ffcd7c2712c87db778",
+							"raw": "localhost:{{port}}/project/delete/61e930ffcd7c2712c87db778",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"project",
 								"delete",
@@ -458,11 +458,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/page",
+							"raw": "localhost:{{port}}/page",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"page"
 							]
@@ -476,11 +476,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/page/61e932b4cd7c2712c87db77f",
+							"raw": "localhost:{{port}}/page/61e932b4cd7c2712c87db77f",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"page",
 								"61e932b4cd7c2712c87db77f"
@@ -495,11 +495,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/pages",
+							"raw": "localhost:{{port}}/pages",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"pages"
 							]
@@ -522,15 +522,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/page/update/61e932b4cd7c2712c87db77f",
+							"raw": "localhost:{{port}}/page/update/61eabacbff17a349b40932cd",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"page",
 								"update",
-								"61e932b4cd7c2712c87db77f"
+								"61eabacbff17a349b40932cd"
 							]
 						}
 					},
@@ -542,11 +542,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/page/delete/61e932b4cd7c2712c87db77f",
+							"raw": "localhost:{{port}}/page/delete/61e932b4cd7c2712c87db77f",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "{{port}}",
 							"path": [
 								"page",
 								"delete",
@@ -557,6 +557,12 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Port",
+			"value": "3000"
 		}
 	]
 }

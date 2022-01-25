@@ -5,9 +5,9 @@ import { UserController } from "../api/user/user.controller";
 import { ProjectController } from "../api/project/project.controller";
 import { PageController } from "../api/page/page.controller";
 import { TranslationFileController } from "../api/translationFile/translationFile.controller";
+import morgan from "morgan";
 
 const cors = require("cors");
-
 /*
  Class server that use an express server internally
  This class can start, stop the server.
@@ -32,6 +32,9 @@ export class Server {
     this.expressServer.use(bodyParser.urlencoded({ extended: false }));
     this.expressServer.use(bodyParser.json());
     this.expressServer.use(cors());
+    this.expressServer.use(
+      morgan(":date[web] :method :url :status - :response-time ms")
+    );
   }
 
   // Make a controller able to listen to http requests

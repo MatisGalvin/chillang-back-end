@@ -19,7 +19,15 @@ export const UserService = {
   },
 
   read: async (id: string) => {
-    const user = await UserModel.findById(id);
+    const user = await UserModel.findById(id).populate({
+      path: "projects",
+      populate: {
+        path: "pages",
+        populate: {
+          path: "translationFiles",
+        },
+      },
+    });
     return user;
   },
 

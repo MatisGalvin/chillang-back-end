@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import { SET_DB_WITH_FAKE_DATA } from "../config/dev.config";
+import { importDatabase } from "../scripts/mongo";
+import { resolve } from "path";
 
 /**
  * Mongoose class in charge of connecting and showing an error in case of connection failure
@@ -28,6 +31,26 @@ export class Mongoose {
       console.log("Database connection error : ", err);
       onError?.();
     });
+  }
+
+  setFakeDatabase() {
+    // try {
+    this.dropAll(() => {
+      SET_DB_WITH_FAKE_DATA
+        ? () => {
+            const pathToDBFakeDump = resolve(
+              "./src/mongoose/dump/testData/chillangDatabase"
+            );
+            console.log(pathToDBFakeDump);
+            importDatabase(pathToDBFakeDump);
+          }
+        : null;
+    });
+    // } catch (err) {
+    //   if (err.message !== "ns not found") {
+    //     throw err;
+    //   }
+    // }
   }
 
   dropAll(onDropped: () => void) {

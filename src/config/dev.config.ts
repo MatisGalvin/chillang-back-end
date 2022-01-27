@@ -1,11 +1,6 @@
-/**
- *   Development configs
- */
-
-export const dbName = "chillangDatabase";
-
 export const mongooseConfig = Object.freeze({
-  DB_URL: `mongodb://localhost:27017/${dbName}`,
+  DB_URL: `mongodb://localhost:27017/`,
+  DB_NAME: "chillangDatabase",
 });
 
 export const serverConfig = Object.freeze({

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { model, mongo } from "mongoose";
 import { SET_DB_WITH_FAKE_DATA } from "../config/dev.config";
 import { importDatabase } from "../scripts/mongo";
 import { resolve } from "path";
@@ -34,23 +34,18 @@ export class Mongoose {
   }
 
   setFakeDatabase() {
-    // try {
     this.dropAll(() => {
-      SET_DB_WITH_FAKE_DATA
-        ? () => {
-            const pathToDBFakeDump = resolve(
-              "./src/mongoose/dump/testData/chillangDatabase"
-            );
-            console.log(pathToDBFakeDump);
-            importDatabase(pathToDBFakeDump);
-          }
-        : null;
+      const pathToDBFakeDump = resolve(
+        "./src/mongoose/dump/testData/chillangDatabase"
+      );
+      console.log(pathToDBFakeDump);
+      console.log(mongoose.connection.host);
+      importDatabase(
+        `mongodb://${mongoose.connection.host}:${mongoose.connection.port}/`,
+        mongoose.connection.db.databaseName,
+        pathToDBFakeDump
+      );
     });
-    // } catch (err) {
-    //   if (err.message !== "ns not found") {
-    //     throw err;
-    //   }
-    // }
   }
 
   dropAll(onDropped: () => void) {

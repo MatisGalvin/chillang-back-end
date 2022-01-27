@@ -1,15 +1,18 @@
-import { exec } from "child_process";
-import { dbName } from "../config/dev.config";
+import restore from "mongodb-restore-dump";
 
-export function importDatabase(
-  databaseDumpFolderAbsolutePath: string,
-  done?: () => void
+async function importDatabase(
+  uri: string,
+  dbName: string,
+  databaseDumpFolderAbsolutePath: string
 ) {
-  exec(
-    `mongorestore -d ${dbName} --dir ${databaseDumpFolderAbsolutePath}`,
-    (error, stdout, stderr) => {
-      console.log("Dump done");
-      done?.();
-    }
+  await restore.database({
+    uri,
+    database: dbName,
+    from: databaseDumpFolderAbsolutePath,
+  });
+  console.log(
+    `Import database from dump located in ${databaseDumpFolderAbsolutePath} done. `
   );
 }
+
+export { importDatabase };

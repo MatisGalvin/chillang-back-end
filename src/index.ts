@@ -1,12 +1,23 @@
 import { Server } from "./server";
 import { Mongoose } from "./mongoose";
-import { mongooseConfig, serverConfig } from "./config/dev.config";
+import {
+  mongooseConfig,
+  serverConfig,
+  SET_DB_WITH_FAKE_DATA,
+} from "./config/dev.config";
+import { mongooseConfig as mongooseConfigTest } from "./config/test.config";
 
-const mongooseDB = new Mongoose(mongooseConfig.DB_URL);
+const mongooseDB = new Mongoose(
+  SET_DB_WITH_FAKE_DATA
+    ? `${mongooseConfigTest.DB_URL}${mongooseConfigTest.DB_NAME}`
+    : `${mongooseConfig.DB_URL}${mongooseConfig.DB_NAME}`
+);
 
 mongooseDB.connect(
   () => {
-    mongooseDB.setFakeDatabase();
+    if (SET_DB_WITH_FAKE_DATA) {
+      mongooseDB.setFakeDatabase();
+    }
   },
   () => {
     console.log("Grosse erreur");

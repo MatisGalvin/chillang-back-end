@@ -16,7 +16,9 @@ export const PageService = {
   },
 
   read: async (id: string) => {
-    const pages = await PageModel.findById(id);
+    const pages = await PageModel.findById(id).populate({
+      path: "translationFiles",
+    });
     return pages;
   },
 

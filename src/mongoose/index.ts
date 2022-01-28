@@ -1,4 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { model, mongo } from "mongoose";
+import { importDatabase } from "../scripts/mongo";
+import { resolve } from "path";
 
 /**
  * Mongoose class in charge of connecting and showing an error in case of connection failure
@@ -27,6 +29,24 @@ export class Mongoose {
     mongoose.connection.on("error", (err) => {
       console.log("Database connection error : ", err);
       onError?.();
+    });
+  }
+
+  /**
+   * setFakeDatabase will drop the entiere database and import a new one. It works
+   * only if SET_DB_WITH_FAKE_DATA is true
+   * We used resolve to create the absolute path from your C:\user.... to your fake datas folder
+   */
+  setFakeDatabase() {
+    this.dropAll(() => {
+      const pathToDBFakeDump = resolve(
+        "./src/mongoose/dump/testData/chillangDatabase"
+      );
+      importDatabase(
+        `mongodb://${mongoose.connection.host}:${mongoose.connection.port}/`,
+        mongoose.connection.db.databaseName,
+        pathToDBFakeDump
+      );
     });
   }
 

@@ -7,6 +7,11 @@ import {
 } from "./config/dev.config";
 import { mongooseConfig as mongooseConfigTest } from "./config/test.config";
 
+/**
+ * In order to set fake data in the DB, you can change the value of SET_DB_FAKE_DATA.
+ * DB_NAME will have 2 possible values : "testDatabase" in test mode or "chillangDatabase" in normal mode
+ */
+
 const mongooseDB = new Mongoose(
   SET_DB_WITH_FAKE_DATA
     ? `${mongooseConfigTest.DB_URL}${mongooseConfigTest.DB_NAME}`
@@ -20,7 +25,7 @@ mongooseDB.connect(
     }
   },
   () => {
-    console.log("Grosse erreur");
+    console.log(" ===== There is an error here ! =====");
   }
 );
 

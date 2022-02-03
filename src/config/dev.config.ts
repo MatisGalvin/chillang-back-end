@@ -7,4 +7,4 @@ export const serverConfig = Object.freeze({
   PORT: 3090,
 });
 
-export const SET_DB_WITH_FAKE_DATA = false;
+export const SET_DB_WITH_FAKE_DATA = true;

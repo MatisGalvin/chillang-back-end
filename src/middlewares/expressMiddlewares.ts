@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 /**
  * This function is a middleware function used by our Express server.
- * In case we need an ID (like for a read or a readAll...), it will check if our ID is valid BEFORE
+ * In case we need an ID (read, delete or update), it will check if our ID is valid BEFORE
  * calling our controller or anything.
  */
 function checkMongooseParamsIDIsValid(req, res, next) {

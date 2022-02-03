@@ -1,13 +1,15 @@
 import { TranslationFileService } from "./translationFile.service";
 import { Express, Request, Response } from "express";
+import { IDeleteRequest, IReadRequest } from "../../typings/request.typing";
+import { ITranslationFile } from "./translationFile.typing";
 
 export class TranslationFileController {
   public listen(server: Express) {
     server.get("/translationFiles", this.readAll);
     server.post("/translationFile", this.create);
-    server.get("/translationFile/:id", this.read);
-    server.post("/translationFile/update/:id", this.update);
-    server.delete("/translationFile/delete/:id", this.delete);
+    server.get("/translationFile/:_id", this.read);
+    server.post("/translationFile/update/:_id", this.update);
+    server.delete("/translationFile/delete/:_id", this.delete);
   }
 
   private async readAll(req: Request, res: Response) {
@@ -15,7 +17,10 @@ export class TranslationFileController {
     res.send(translationFiles);
   }
 
-  private async create(req: Request, res: Response) {
+  private async create(
+    req: Request<{}, {}, { lang: string; data: string[] }>,
+    res: Response
+  ) {
     const { lang, data } = req.body;
     const createdTranslationFile = await TranslationFileService.create(
       lang,
@@ -24,25 +29,28 @@ export class TranslationFileController {
     res.send(createdTranslationFile);
   }
 
-  private async read(req: Request, res: Response) {
-    const { id } = req.params;
-    const translationFile = await TranslationFileService.read(id);
+  private async read(req: IReadRequest, res: Response) {
+    const { _id } = req.params;
+    const translationFile = await TranslationFileService.read(_id);
     res.send(translationFile);
   }
 
-  private async update(req: Request, res: Response) {
-    const { id } = req.params;
+  private async update(
+    req: Request<{ _id: string }, {}, { translationFile: ITranslationFile }>,
+    res: Response
+  ) {
+    const { _id } = req.params;
     const { translationFile } = req.body;
     const updatedTranslationFile = await TranslationFileService.update(
-      id,
+      _id,
       translationFile
     );
     res.send(updatedTranslationFile);
   }
 
-  private async delete(req: Request, res: Response) {
-    const { id } = req.params;
-    const deletedTranslationFile = await TranslationFileService.delete(id);
+  private async delete(req: IDeleteRequest, res: Response) {
+    const { _id } = req.params;
+    const deletedTranslationFile = await TranslationFileService.delete(_id);
     res.send(deletedTranslationFile);
   }
 }

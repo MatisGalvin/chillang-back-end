@@ -13,6 +13,12 @@ const ProjectSchema = new Schema<IProject>({
       ref: COLLECTION_NAMES.PAGE,
     },
   ],
+  supportedLanguages: [
+    {
+      name: String,
+      code: String,
+    },
+  ],
 });
 
 const ProjectModel = mongoose.model<IProject>(

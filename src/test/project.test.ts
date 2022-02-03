@@ -38,7 +38,7 @@ describe("Project API", () => {
   });
 
   // Should return one project named Pepouz
-  it("/project/:id (GET)", async () => {
+  it("/project/:_id (GET)", async () => {
     const createdProject = await ProjectModel.create({
       name: "Pepouz",
       apiKey: "oklm",
@@ -59,7 +59,7 @@ describe("Project API", () => {
   });
 
   // Should change the name of the project Pepouz to PepouzSurLaPelouz
-  it("/project/update/:id (POST)", async () => {
+  it("/project/update/:_id (POST)", async () => {
     const createdProject = await ProjectModel.create({
       name: "Pepouz",
       apiKey: "oklm",
@@ -80,7 +80,7 @@ describe("Project API", () => {
   });
 
   // Should delete one project named 'JambonProject'
-  it("/project/delete/:id (DELETE)", async () => {
+  it("/project/delete/:_id (DELETE)", async () => {
     const createdProject = await ProjectModel.create({
       name: "JambonProject",
       apiKey: "oklm",

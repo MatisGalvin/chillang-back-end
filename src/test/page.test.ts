@@ -29,7 +29,7 @@ describe("Page API", () => {
   });
 
   // Should return one page named Contact Page
-  it("/page/:id (GET)", async () => {
+  it("/page/:_id (GET)", async () => {
     const createdPage = await PageModel.create({
       name: "Contact Page",
       translationFiles: ["61e6d2afbc63fbd022d3a8ac"],
@@ -48,7 +48,7 @@ describe("Page API", () => {
   });
 
   // Should change the name of the page 'Contact Page' to 'About Page'
-  it("/page/update/:id (POST)", async () => {
+  it("/page/update/:_id (POST)", async () => {
     const createdPage = await PageModel.create({
       name: "Contact Page",
       translationFiles: ["61e6d2afbc63fbd022d3a8ac"],
@@ -68,7 +68,7 @@ describe("Page API", () => {
   });
 
   // Shoud delete one page named 'Contact Page'
-  it("/page/delete/:id (DELETE)", async () => {
+  it("/page/delete/:_id (DELETE)", async () => {
     const createdPage = await PageModel.create({
       name: "Contact Page",
       translationFiles: ["61e6d2afbc63fbd022d3a8ac"],

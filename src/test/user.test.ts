@@ -29,7 +29,7 @@ describe("User API", () => {
   });
 
   // Should return one user named Jambon
-  it("/user/:id (GET)", async () => {
+  it("/user/:_id (GET)", async () => {
     const createdUser = await UserModel.create({
       username: "Jambon",
       encryptedPassword: "parme",
@@ -44,7 +44,7 @@ describe("User API", () => {
   });
 
   // Shoud update the username Jambon to JambonBlanc
-  it("/user/update/:id (POST)", async () => {
+  it("/user/update/:_id (POST)", async () => {
     const createdUser = await UserModel.create({
       username: "Jambon",
       encryptedPassword: "parme",
@@ -60,7 +60,7 @@ describe("User API", () => {
   });
 
   // Shoud delete one user with username Jambon
-  it("/user/delete/:id (DELETE)", async () => {
+  it("/user/delete/:_id (DELETE)", async () => {
     const createdUser = await UserModel.create({
       username: "Jambon",
       encryptedPassword: "parme",

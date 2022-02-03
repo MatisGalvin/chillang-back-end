@@ -52,7 +52,7 @@ describe("TranslationFile API", () => {
   });
 
   // Should return one translationFile with lang : fr and data : id "title" value: "Bien le bonjour"
-  it("/translationFile/:id (GET)", async () => {
+  it("/translationFile/:_id (GET)", async () => {
     const createdTranslationFile = await TranslationFileModel.create({
       lang: "fr",
       data: [
@@ -76,7 +76,7 @@ describe("TranslationFile API", () => {
   });
 
   // Should change the vaue of the translationFile lang : fr and data : id "title" value: "Bien le bonjour" into value: "Voila les nouvelles"
-  it("/translationFile/update/:id (POST)", async () => {
+  it("/translationFile/update/:_id (POST)", async () => {
     const createdTranslationFile = await TranslationFileModel.create({
       lang: "fr",
       data: [
@@ -112,7 +112,7 @@ describe("TranslationFile API", () => {
   });
 
   // Should delete one translationFile lang : fr and data : id "title" value: "Bien le bonjour"
-  it("/translationFile/delete/:id (DELETE)", async () => {
+  it("/translationFile/delete/:_id (DELETE)", async () => {
     const createdTranslationFile = await TranslationFileModel.create({
       lang: "fr",
       data: [

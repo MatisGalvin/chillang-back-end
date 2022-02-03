@@ -4,6 +4,7 @@ export interface ITranslationFile {
     {
       id: string;
       value: string;
+      description: string;
     }
   ];
 }

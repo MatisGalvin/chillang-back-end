@@ -6,6 +6,7 @@ import { ProjectController } from "../api/project/project.controller";
 import { PageController } from "../api/page/page.controller";
 import { TranslationFileController } from "../api/translationFile/translationFile.controller";
 import morgan from "morgan";
+import { checkMongooseParamsIDIsValid } from "../middlewares/expressMiddlewares";
 
 const cors = require("cors");
 /*
@@ -28,6 +29,7 @@ export class Server {
     this.setControllersToListen();
   }
 
+  // The last middleware will check the route in our url. If there's an ID param, it will called the ckeckMongooseParamsIDIsValid function
   setupMiddlewares() {
     this.expressServer.use(bodyParser.urlencoded({ extended: false }));
     this.expressServer.use(bodyParser.json());
@@ -35,6 +37,7 @@ export class Server {
     this.expressServer.use(
       morgan(":date[web] :method :url :status - :response-time ms")
     );
+    this.expressServer.use("(/*/):_id", checkMongooseParamsIDIsValid);
   }
 
   // Make a controller able to listen to http requests

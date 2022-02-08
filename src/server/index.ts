@@ -1,18 +1,17 @@
 import express, { Express } from "express";
 import bodyParser from "body-parser";
 import { Server as HttpServer } from "http";
-import { UserController } from "../api/user/user.controller";
-import { ProjectController } from "../api/project/project.controller";
-import { PageController } from "../api/page/page.controller";
-import { TranslationFileController } from "../api/translationFile/translationFile.controller";
 import morgan from "morgan";
 import { checkMongooseParamsIDIsValid } from "../middlewares/expressMiddlewares";
+import * as swaggerUI from "swagger-ui-express";
+import { RegisterRoutes } from "../../dist/routes";
 
+const swaggerDocument = require("../../swagger.json");
 const cors = require("cors");
 /*
  Class server that use an express server internally
  This class can start, stop the server.
- The server is in charge of telling the controller to listen to http requests
+ The server is in charge of telling the controller to listen to http requests (by the use of RegisterRoute)
  Finally it can returns the express server via getExpressInstance() to pass it for whom need it
 */
 export class Server {
@@ -26,7 +25,18 @@ export class Server {
     this.port = port;
     this.expressServer = express();
     this.setupMiddlewares();
-    this.setControllersToListen();
+  }
+
+  generateDocumentation() {
+    try {
+      this.expressServer.use(
+        "/docs",
+        swaggerUI.serve,
+        swaggerUI.setup(swaggerDocument)
+      );
+    } catch (err) {
+      console.error("unable to read swagger.json", err);
+    }
   }
 
   // The last middleware will check the route in our url. If there's an ID param, it will called the ckeckMongooseParamsIDIsValid function
@@ -37,15 +47,13 @@ export class Server {
     this.expressServer.use(
       morgan(":date[web] :method :url :status - :response-time ms")
     );
-    this.expressServer.use("(/*/):_id", checkMongooseParamsIDIsValid);
-  }
 
-  // Make a controller able to listen to http requests
-  setControllersToListen() {
-    new UserController().listen(this.expressServer);
-    new ProjectController().listen(this.expressServer);
-    new PageController().listen(this.expressServer);
-    new TranslationFileController().listen(this.expressServer);
+    // @todo : A FAIRE
+    RegisterRoutes(this.expressServer);
+    this.generateDocumentation();
+
+    // Middleware that check on url must be called after the documentation has been generated
+    this.expressServer.use("(/*/):_id", checkMongooseParamsIDIsValid);
   }
 
   start(onStarted?: () => void): void {

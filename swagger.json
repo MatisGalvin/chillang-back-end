@@ -1,0 +1,185 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"ITranslationFileDataItem": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"value",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ITranslationFile": {
+				"properties": {
+					"lang": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ITranslationFileDataItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"lang",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "nodejs-es6-boilerplate",
+		"version": "1.0.1",
+		"description": "Node.js boilerplate with ES6, ESLint, and Prettier",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {
+			"name": "Veri Ferdiansyah",
+			"email": "veri.ferdi@gmail.com",
+			"url": "https://vferdiansyah.github.io"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/translationFiles": {
+			"get": {
+				"operationId": "ReadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/ITranslationFile"
+									},
+									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": [
+											{
+												"_id": "61e6d2afbc63fbd022d3a8af",
+												"lang": "GB",
+												"data": [
+													{
+														"id": "hello",
+														"value": "Hello gay",
+														"description": "Description bfikzrtiau nfbzejfez ofuhzor  goe jambon",
+														"_id": "61faab310fa2d3394df5fd08"
+													}
+												]
+											},
+											{
+												"_id": "61faac320fa2d3394df5fd0b",
+												"lang": "FR",
+												"data": [
+													{
+														"id": "hello",
+														"value": "Bonjour les amis",
+														"description": "Description page accueil petit message",
+														"_id": "61faac320fa2d3394df5fd0c"
+													}
+												]
+											},
+											{
+												"_id": "61faac8d0fa2d3394df5fd0e",
+												"lang": "ES",
+												"data": [
+													{
+														"id": "hello",
+														"value": "Hola ke tal",
+														"description": "Si tiendo para nadal y los churros",
+														"_id": "61faac8d0fa2d3394df5fd0f"
+													}
+												]
+											},
+											{
+												"_id": "62029fc4d5d70030c81c1223",
+												"lang": "string",
+												"data": [
+													{
+														"id": "string",
+														"value": "string",
+														"description": "string",
+														"_id": "62029fc4d5d70030c81c1224"
+													}
+												]
+											},
+											{
+												"_id": "62029fc6d5d70030c81c1226",
+												"lang": "string",
+												"data": [
+													{
+														"id": "string",
+														"value": "string",
+														"description": "string",
+														"_id": "62029fc6d5d70030c81c1227"
+													}
+												]
+											}
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ITranslationFile"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}

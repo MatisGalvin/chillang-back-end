@@ -5,7 +5,8 @@
     "target": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "src/dist"
+    "outDir": "src/dist",
+    "experimentalDecorators": true
   },
   "lib": ["es2015"]
 }

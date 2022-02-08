@@ -61,6 +61,56 @@ const EX = {
       ],
     },
   ],
+
+  create: {
+    lang: "GB",
+    data: [
+      {
+        id: "testing",
+        value: "Do you want to try something ?",
+        description: "test data",
+      },
+    ],
+  },
+
+  read: {
+    _id: "61e6d2afbc63fbd022d3a8af",
+    lang: "GB",
+    data: [
+      {
+        id: "hello",
+        value: "Hello gay",
+        description: "Description bfikzrtiau nfbzejfez ofuhzor  goe jambon",
+        _id: "61faab310fa2d3394df5fd08",
+      },
+    ],
+  },
+
+  update: {
+    _id: "61e6d2afbc63fbd022d3a8af",
+    lang: "GB",
+    data: [
+      {
+        id: "hello",
+        value: "Hello gailles",
+        description: "Description bfikzrtiau nfbzejfez ofuhzor  goe jambon",
+        _id: "6202e53245f1cf8c32461822",
+      },
+    ],
+  },
+
+  delete: {
+    _id: "61e6d2afbc63fbd022d3a8af",
+    lang: "GB",
+    data: [
+      {
+        id: "hello",
+        value: "Hello gay",
+        description: "Description bfikzrtiau nfbzejfez ofuhzor  goe jambon",
+        _id: "61faab310fa2d3394df5fd08",
+      },
+    ],
+  },
 };
 
 export { EX };

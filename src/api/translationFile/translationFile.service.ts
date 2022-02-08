@@ -20,10 +20,10 @@ export const TranslationFileService = {
     return translationFile;
   },
 
-  update: async (id: string, translationFile: ITranslationFile) => {
+  update: async (id: string, body: ITranslationFile) => {
     const updatedTranslationFile = await TranslationFileModel.findByIdAndUpdate(
       id,
-      translationFile,
+      body,
       { new: true }
     );
     return updatedTranslationFile;

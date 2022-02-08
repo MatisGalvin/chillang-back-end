@@ -44,6 +44,75 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"ITranslationFileRead": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"lang": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ITranslationFileDataItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"_id",
+					"lang",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ITranslationFileUpdate": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"lang": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ITranslationFileDataItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"_id",
+					"lang",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ITranslationFileDelete": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"lang": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ITranslationFileDataItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"_id",
+					"lang",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {}
@@ -157,7 +226,23 @@
 						"description": "Ok",
 						"content": {
 							"application/json": {
-								"schema": {}
+								"schema": {
+									"$ref": "#/components/schemas/ITranslationFile"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"lang": "GB",
+											"data": [
+												{
+													"id": "testing",
+													"value": "Do you want to try something ?",
+													"description": "test data"
+												}
+											]
+										}
+									}
+								}
 							}
 						}
 					}
@@ -174,6 +259,148 @@
 						}
 					}
 				}
+			}
+		},
+		"/translationFiles/{_id}": {
+			"get": {
+				"operationId": "Read",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ITranslationFileRead"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e6d2afbc63fbd022d3a8af",
+											"lang": "GB",
+											"data": [
+												{
+													"id": "hello",
+													"value": "Hello gay",
+													"description": "Description bfikzrtiau nfbzejfez ofuhzor  goe jambon",
+													"_id": "61faab310fa2d3394df5fd08"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "_id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/translationFiles/update/{_id}": {
+			"post": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ITranslationFileUpdate"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e6d2afbc63fbd022d3a8af",
+											"lang": "GB",
+											"data": [
+												{
+													"id": "hello",
+													"value": "Hello gailles",
+													"description": "Description bfikzrtiau nfbzejfez ofuhzor  goe jambon",
+													"_id": "6202e53245f1cf8c32461822"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "_id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ITranslationFile"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/translationFiles/delete/{_id}": {
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ITranslationFileDelete"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e6d2afbc63fbd022d3a8af",
+											"lang": "GB",
+											"data": [
+												{
+													"id": "hello",
+													"value": "Hello gay",
+													"description": "Description bfikzrtiau nfbzejfez ofuhzor  goe jambon",
+													"_id": "61faab310fa2d3394df5fd08"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "_id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
 			}
 		}
 	},

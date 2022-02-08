@@ -12,11 +12,55 @@ export class TranslationFileController {
     server.delete("/translationFile/delete/:_id", this.delete);
   }
 
+  /**
+   * @swagger
+   * /translationFiles:
+   *  get:
+   *    description: Get all translation files
+   *    responses:
+   *      200:
+   *        description: Success
+   */
   private async readAll(req: Request, res: Response) {
     const translationFiles = await TranslationFileService.readAll();
     res.send(translationFiles);
   }
 
+  /**
+   * @swagger
+   * /translationFiles:
+   *  post:
+   *    description: Create a new translation file
+   *    parameters:
+   *    - name: body
+   *      description: language for this translation file
+   *      in: body
+   *      required: true
+   *      schema:
+   *        type: object
+   *        properties:
+   *          lang:
+   *            type: string
+   *            example: FR
+   *          data:
+   *            type: array
+   *            items:
+   *              type: object
+   *              properties:
+   *                id:
+   *                  type: string
+   *                  example: hello
+   *                value:
+   *                  type: string
+   *                  example: Hello les boys
+   *                description:
+   *                  type: string
+   *                  example: Une petite description oklm
+   *    responses:
+   *       200:
+   *         description: A single translation files.
+   *
+   */
   private async create(
     req: Request<{}, {}, { lang: string; data: string[] }>,
     res: Response

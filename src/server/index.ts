@@ -7,6 +7,21 @@ import { PageController } from "../api/page/page.controller";
 import { TranslationFileController } from "../api/translationFile/translationFile.controller";
 import morgan from "morgan";
 import { checkMongooseParamsIDIsValid } from "../middlewares/expressMiddlewares";
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUI = require("swagger-ui-express");
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Chillang API",
+      version: "1.0.0",
+    },
+  },
+  apis: ["./src/api/translationFile/translationFile.controller.ts"], // files containing annotations as above
+};
+
+const openapiSpecification = swaggerJsDoc(options);
 
 const cors = require("cors");
 /*
@@ -36,6 +51,11 @@ export class Server {
     this.expressServer.use(cors());
     this.expressServer.use(
       morgan(":date[web] :method :url :status - :response-time ms")
+    );
+    this.expressServer.use(
+      "/docs",
+      swaggerUI.serve,
+      swaggerUI.setup(openapiSpecification)
     );
     this.expressServer.use("(/*/):_id", checkMongooseParamsIDIsValid);
   }

@@ -7,4 +7,5 @@ export const serverConfig = Object.freeze({
   PORT: 3090,
 });
 
+export const SWAGGER_DOC_URL = "/docs";
 export const SET_DB_WITH_FAKE_DATA = true;

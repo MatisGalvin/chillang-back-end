@@ -5,6 +5,8 @@ import morgan from "morgan";
 import { checkMongooseParamsIDIsValid } from "../middlewares/expressMiddlewares";
 import * as swaggerUI from "swagger-ui-express";
 import { RegisterRoutes } from "../../dist/routes";
+import { SWAGGER_DOC_URL } from "../config/dev.config";
+import { AddressInfo } from "net";
 
 const swaggerDocument = require("../../swagger.json");
 const cors = require("cors");
@@ -20,9 +22,11 @@ export class Server {
   port: number;
   showLog: boolean;
 
-  constructor(port: number, showLog = true) {
+  constructor(port?: number, showLog = true) {
+    if (port) {
+      this.port = port;
+    }
     this.showLog = showLog;
-    this.port = port;
     this.expressServer = express();
     this.setupMiddlewares();
   }
@@ -30,7 +34,7 @@ export class Server {
   generateDocumentation() {
     try {
       this.expressServer.use(
-        "/docs",
+        SWAGGER_DOC_URL,
         swaggerUI.serve,
         swaggerUI.setup(swaggerDocument)
       );
@@ -44,9 +48,10 @@ export class Server {
     this.expressServer.use(bodyParser.urlencoded({ extended: false }));
     this.expressServer.use(bodyParser.json());
     this.expressServer.use(cors());
-    this.expressServer.use(
-      morgan(":date[web] :method :url :status - :response-time ms")
-    );
+    process.env.NODE_ENV === "development" &&
+      this.expressServer.use(
+        morgan(":date[web] :method :url :status - :response-time ms")
+      );
 
     // @todo : A FAIRE
     RegisterRoutes(this.expressServer);
@@ -56,9 +61,21 @@ export class Server {
     this.expressServer.use("(/*/):_id", checkMongooseParamsIDIsValid);
   }
 
+  getServerAddress = (): string => {
+    const serverAddress = this.server.address() as AddressInfo;
+    return `${
+      serverAddress.address === "::"
+        ? "http://localhost"
+        : serverAddress.address
+    }:${serverAddress.port}`;
+  };
   start(onStarted?: () => void): void {
     this.server = this.expressServer.listen(this.port, () => {
-      this.showLog && console.log("Server listening on : ", this.port);
+      this.showLog &&
+        console.log(`Server running on: ${this.getServerAddress()}`);
+      console.log(
+        `Documentation running on: ${this.getServerAddress()}${SWAGGER_DOC_URL}`
+      );
       onStarted?.();
     });
   }

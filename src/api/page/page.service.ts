@@ -2,10 +2,10 @@ import { PageModel } from "./page.model";
 import { IPage } from "./page.typing";
 
 export const PageService = {
-  create: async (name: string, translationFiles: string[]) => {
+  create: async (body: IPage) => {
     const createdPages = await PageModel.create({
-      name,
-      translationFiles,
+      name: body.name,
+      translationFiles: body.translationFiles,
     });
     return createdPages;
   },

@@ -1,6 +1,4 @@
 import { TranslationFileService } from "./translationFile.service";
-import { Express, Response } from "express";
-import { IDeleteRequest, IReadRequest } from "../../typings/request.typing";
 import {
   ITranslationFile,
   ITranslationFileDelete,
@@ -9,7 +7,6 @@ import {
 } from "./translationFile.typing";
 import {
   Body,
-  BodyProp,
   Controller,
   Delete,
   Example,
@@ -17,10 +14,12 @@ import {
   Path,
   Post,
   Route,
+  Tags,
 } from "tsoa";
 import { EX } from "./translationFile.swagger";
 
 @Route("/translationFiles")
+@Tags("Translation Files")
 export class TranslationFileController extends Controller {
   @Get("/")
   @Example<ITranslationFile[]>(EX.readAll)

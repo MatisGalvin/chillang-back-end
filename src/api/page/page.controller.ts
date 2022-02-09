@@ -1,51 +1,41 @@
 import { PageService } from "./page.service";
-import { Express, Request, Response } from "express";
-import { IDeleteRequest, IReadRequest } from "../../typings/request.typing";
-import { IPage } from "./page.typing";
-import { ITranslationFile } from "../translationFile/translationFile.typing";
+import { IPage, IPageDelete, IPageRead, IPageUpdate } from "./page.typing";
+import { Body, Delete, Example, Get, Path, Post, Route, Tags } from "tsoa";
+import { EX } from "./page.swagger";
 
+@Route("/pages")
+@Tags("Page")
 export class PageController {
-  public listen(server: Express) {
-    server.get("/pages", this.readAll);
-    server.post("/page", this.create);
-    server.get("/page/:_id", this.read);
-    server.post("/page/update/:_id", this.update);
-    server.delete("/page/delete/:_id", this.delete);
+  @Get("/")
+  @Example<IPage[]>(EX.readAll)
+  public async readAll(): Promise<IPage[]> {
+    return await PageService.readAll();
   }
 
-  private async readAll(req: Request, res: Response) {
-    const pages = await PageService.readAll();
-    res.send(pages);
+  @Post("/")
+  @Example<IPage>(EX.create)
+  public async create(@Body() body: IPage): Promise<IPage> {
+    return await PageService.create(body);
   }
 
-  private async create(
-    req: Request<{}, {}, { name: string; translationFiles: string[] }>,
-    res: Response
-  ) {
-    const { name, translationFiles } = req.body;
-    const createdPage = await PageService.create(name, translationFiles);
-    res.send(createdPage);
+  @Get("/{_id}")
+  @Example<IPageRead>(EX.read)
+  public async read(@Path() _id: string): Promise<IPage> {
+    return await PageService.read(_id);
   }
 
-  private async read(req: IReadRequest, res: Response) {
-    const { _id } = req.params;
-    const page = await PageService.read(_id);
-    res.send(page);
+  @Post("/update/{_id}")
+  @Example<IPageUpdate>(EX.update)
+  public async update(
+    @Path() _id: string,
+    @Body() body: IPage
+  ): Promise<IPage> {
+    return await PageService.update(_id, body);
   }
 
-  private async update(
-    req: Request<{ _id: string }, {}, { page: IPage }>,
-    res: Response
-  ) {
-    const { _id } = req.params;
-    const { page } = req.body;
-    const updatedPage = await PageService.update(_id, page);
-    res.send(updatedPage);
-  }
-
-  private async delete(req: IDeleteRequest, res: Response) {
-    const { _id } = req.params;
-    const deletedPage = await PageService.delete(_id);
-    res.send(deletedPage);
+  @Delete("/delete/{_id}")
+  @Example<IPageDelete>(EX.delete)
+  public async delete(@Path() _id: string): Promise<IPageDelete> {
+    return await PageService.delete(_id);
   }
 }

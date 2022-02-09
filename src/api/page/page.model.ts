@@ -4,15 +4,18 @@ import { COLLECTION_NAMES } from "../../mongoose/constants";
 
 const Schema = mongoose.Schema;
 
-const PageSchema = new Schema<IPage>({
-  name: String,
-  translationFiles: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: COLLECTION_NAMES.TRANSLATION_FILE,
-    },
-  ],
-});
+const PageSchema = new Schema<IPage>(
+  {
+    name: String,
+    translationFiles: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: COLLECTION_NAMES.TRANSLATION_FILE,
+      },
+    ],
+  },
+  { versionKey: false }
+);
 
 const PageModel = mongoose.model<IPage>(COLLECTION_NAMES.PAGE, PageSchema);
 

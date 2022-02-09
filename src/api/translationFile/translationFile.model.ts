@@ -9,6 +9,7 @@ const TranslationFileSchema = new Schema<ITranslationFile>(
     lang: String,
     data: [
       {
+        _id: false,
         id: String,
         value: String,
         description: String,

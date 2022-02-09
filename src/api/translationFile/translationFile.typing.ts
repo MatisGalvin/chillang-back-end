@@ -9,12 +9,6 @@ export interface ITranslationFileDataItem {
   description: string;
 }
 
-export interface ITranslationFileRead {
+export interface ITranslationFileDoc extends ITranslationFile {
   _id: string;
-  lang: string;
-  data: ITranslationFileDataItem[];
 }
-
-export interface ITranslationFileUpdate extends ITranslationFileRead {}
-
-export interface ITranslationFileDelete extends ITranslationFileRead {}

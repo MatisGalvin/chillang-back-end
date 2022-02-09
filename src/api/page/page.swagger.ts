@@ -73,66 +73,44 @@ const EX = {
       ],
     },
   ],
-
   create: {
-    name: "Contact Page",
-    translationFiles: ["61e6d2afbc63fbd022d3a8ac"],
+    name: "PageTesting",
+    translationFiles: ["61faac320fa2d3394df5fd0b"],
+    _id: "6203ed62d5dca5811fcb4c8b",
   },
-
   read: {
-    _id: "6202cdca4dc377b8a73b343d",
-    name: "SharePlaylist",
+    _id: "61e6d2afbc63fbd022d3a8ab",
+    name: "Home",
     translationFiles: [
       {
-        _id: "6202d05b4dc377b8a73b3456",
-        lang: "GB",
-        data: [
-          {
-            _id: "62038da462e4532bfd894fa1",
-            id: "SharePlaylist",
-            value: "Do you want your playlist to be public or private ?",
-            description: "select privacy playlist ",
-          },
-        ],
-      },
-      {
-        _id: "6202d0814dc377b8a73b3457",
+        _id: "61faac320fa2d3394df5fd0b",
         lang: "FR",
         data: [
           {
-            _id: "62038da462e4532bfd894fa2",
-            id: "SharePlaylist",
-            value: "Voulez vous que votre playlist soit publique ou privée ?",
-            description: "Choix publique ou privé utilisateur",
+            id: "hello",
+            value: "Bonjour les amis",
+            description: "Description page accueil petit message",
           },
         ],
       },
       {
-        _id: "6202d0ca4dc377b8a73b3458",
+        _id: "61faac8d0fa2d3394df5fd0e",
         lang: "ES",
         data: [
           {
-            _id: "62038da462e4532bfd894fa3",
-            id: "SharePlaylist",
-            value:
-              "Quieres que tu lista de reproducción sea pública o privada?",
-            description: "lista de reproducción pública o privada",
+            id: "hello",
+            value: "Hola ke tal",
+            description: "Si tiendo para nadal y los churros",
           },
         ],
       },
     ],
   },
-
   update: {
-    _id: "6202d2114dc377b8a73b346b",
-    name: "PublishPodcast",
-    translationFiles: [
-      "6202b3fd4dc377b8a73b339a",
-      "6202b4424dc377b8a73b339b",
-      "6202ca4d4dc377b8a73b3402",
-    ],
+    _id: "61e6d2afbc63fbd022d3a8ab",
+    name: "Test page update",
+    translationFiles: ["61faac320fa2d3394df5fd0b"],
   },
-
   delete: {
     _id: "61e6d2afbc63fbd022d3a8ab",
     name: "Home",

@@ -7,16 +7,19 @@ import "../translationFile/translationFile.model";
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema<IUser>({
-  username: String,
-  encryptedPassword: String,
-  projects: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: COLLECTION_NAMES.PROJECT,
-    },
-  ],
-});
+const UserSchema = new Schema<IUser>(
+  {
+    username: String,
+    encryptedPassword: String,
+    projects: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: COLLECTION_NAMES.PROJECT,
+      },
+    ],
+  },
+  { versionKey: false }
+);
 
 const UserModel = mongoose.model<IUser>(COLLECTION_NAMES.USER, UserSchema);
 

@@ -1,51 +1,41 @@
 import { ProjectService } from "./project.service";
-import { Express, Request, Response } from "express";
-import { IDeleteRequest, IReadRequest } from "../../typings/request.typing";
-import { IPage } from "../page/page.typing";
-import { IProject } from "./project.typing";
+import { IProject, IProjectDoc } from "./project.typing";
+import { Body, Delete, Example, Get, Path, Post, Route, Tags } from "tsoa";
+import { EX } from "./project.swagger";
 
+@Route("/projects")
+@Tags("Projects")
 export class ProjectController {
-  public listen(server: Express) {
-    server.get("/projects", this.readAll);
-    server.post("/project", this.create);
-    server.get("/project/:_id", this.read);
-    server.post("/project/update/:_id", this.update);
-    server.delete("/project/delete/:_id", this.delete);
+  @Get("/")
+  @Example<IProjectDoc[]>(EX.readAll)
+  public async readAll(): Promise<IProjectDoc[]> {
+    return await ProjectService.readAll();
   }
 
-  private async create(
-    req: Request<{}, {}, { name: string; apiKey: string; pages: string[] }>,
-    res: Response
-  ) {
-    const { name, apiKey, pages } = req.body;
-    const createdProject = await ProjectService.create(name, apiKey, pages);
-    res.send(createdProject);
+  @Post("/")
+  @Example<IProjectDoc>(EX.create)
+  public async create(@Body() body: IProject): Promise<IProjectDoc> {
+    return await ProjectService.create(body);
   }
 
-  private async readAll(req: Request, res: Response) {
-    const projects = await ProjectService.readAll();
-    res.send(projects);
+  @Get("/{_id}")
+  // @Example<IProject>(EX.read)
+  public async read(@Path() _id: string): Promise<IProjectDoc> {
+    return await ProjectService.read(_id);
   }
 
-  private async read(req: IReadRequest, res: Response) {
-    const { _id } = req.params;
-    const project = await ProjectService.read(_id);
-    res.send(project);
+  @Post("/update/{_id}")
+  // @Example<IProject>(EX.update)
+  public async update(
+    @Path() _id: string,
+    @Body() body: IProject
+  ): Promise<IProjectDoc> {
+    return await ProjectService.update(_id, body);
   }
 
-  private async update(
-    req: Request<{ _id: string }, {}, { project: IProject }>,
-    res: Response
-  ) {
-    const { _id } = req.params;
-    const { project } = req.body;
-    const updatedProject = await ProjectService.update(_id, project);
-    res.send(updatedProject);
-  }
-
-  private async delete(req: IDeleteRequest, res: Response) {
-    const { _id } = req.params;
-    const deletedProject = await ProjectService.delete(_id);
-    res.send(deletedProject);
+  @Delete("/delete/{_id}")
+  // @Example<IProject>(EX.delete)
+  public async delete(@Path() _id: string): Promise<IProjectDoc> {
+    return await ProjectService.delete(_id);
   }
 }

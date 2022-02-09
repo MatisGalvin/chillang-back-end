@@ -1,9 +1,7 @@
 import { TranslationFileService } from "./translationFile.service";
 import {
   ITranslationFile,
-  ITranslationFileDelete,
-  ITranslationFileRead,
-  ITranslationFileUpdate,
+  ITranslationFileDoc,
 } from "./translationFile.typing";
 import {
   Body,
@@ -22,8 +20,8 @@ import { EX } from "./translationFile.swagger";
 @Tags("Translation Files")
 export class TranslationFileController extends Controller {
   @Get("/")
-  @Example<ITranslationFile[]>(EX.readAll)
-  public async readAll(): Promise<ITranslationFile[]> {
+  @Example<ITranslationFileDoc[]>(EX.readAll)
+  public async readAll(): Promise<ITranslationFileDoc[]> {
     return await TranslationFileService.readAll();
   }
 
@@ -31,28 +29,28 @@ export class TranslationFileController extends Controller {
   @Example<ITranslationFile>(EX.create)
   public async create(
     @Body() body: ITranslationFile
-  ): Promise<ITranslationFile> {
+  ): Promise<ITranslationFileDoc> {
     return await TranslationFileService.create(body);
   }
 
   @Get("/{_id}")
-  @Example<ITranslationFileRead>(EX.read)
-  public async read(@Path() _id: string): Promise<ITranslationFileRead> {
+  @Example<ITranslationFileDoc>(EX.read)
+  public async read(@Path() _id: string): Promise<ITranslationFileDoc> {
     return await TranslationFileService.read(_id);
   }
 
   @Post("/update/{_id}")
-  @Example<ITranslationFileUpdate>(EX.update)
+  @Example<ITranslationFileDoc>(EX.update)
   public async update(
     @Path() _id: string,
     @Body() body: ITranslationFile
-  ): Promise<ITranslationFileUpdate> {
+  ): Promise<ITranslationFileDoc> {
     return await TranslationFileService.update(_id, body);
   }
 
   @Delete("/delete/{_id}")
-  @Example<ITranslationFileDelete>(EX.delete)
-  public async delete(@Path() _id: string): Promise<ITranslationFileDelete> {
+  @Example<ITranslationFileDoc>(EX.delete)
+  public async delete(@Path() _id: string): Promise<ITranslationFileDoc> {
     return await TranslationFileService.delete(_id);
   }
 }

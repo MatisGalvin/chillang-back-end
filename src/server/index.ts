@@ -4,7 +4,7 @@ import { Server as HttpServer } from "http";
 import morgan from "morgan";
 import { checkMongooseParamsIDIsValid } from "../middlewares/expressMiddlewares";
 import * as swaggerUI from "swagger-ui-express";
-import { RegisterRoutes } from "../../dist/routes";
+import { RegisterRoutes } from "../../routes";
 import { SWAGGER_DOC_URL } from "../config/dev.config";
 import { AddressInfo } from "net";
 

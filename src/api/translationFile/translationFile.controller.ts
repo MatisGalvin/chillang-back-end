@@ -1,56 +1,56 @@
 import { TranslationFileService } from "./translationFile.service";
-import { Express, Request, Response } from "express";
-import { IDeleteRequest, IReadRequest } from "../../typings/request.typing";
-import { ITranslationFile } from "./translationFile.typing";
+import {
+  ITranslationFile,
+  ITranslationFileDoc,
+} from "./translationFile.typing";
+import {
+  Body,
+  Controller,
+  Delete,
+  Example,
+  Get,
+  Path,
+  Post,
+  Route,
+  Tags,
+} from "tsoa";
+import { EX } from "./translationFile.swagger";
 
-export class TranslationFileController {
-  public listen(server: Express) {
-    server.get("/translationFiles", this.readAll);
-    server.post("/translationFile", this.create);
-    server.get("/translationFile/:_id", this.read);
-    server.post("/translationFile/update/:_id", this.update);
-    server.delete("/translationFile/delete/:_id", this.delete);
+@Route("/translationFiles")
+@Tags("Translation Files")
+export class TranslationFileController extends Controller {
+  @Get("/")
+  @Example<ITranslationFileDoc[]>(EX.readAll)
+  public async readAll(): Promise<ITranslationFileDoc[]> {
+    return await TranslationFileService.readAll();
   }
 
-  private async readAll(req: Request, res: Response) {
-    const translationFiles = await TranslationFileService.readAll();
-    res.send(translationFiles);
+  @Post("/")
+  @Example<ITranslationFile>(EX.create)
+  public async create(
+    @Body() body: ITranslationFile
+  ): Promise<ITranslationFileDoc> {
+    return await TranslationFileService.create(body);
   }
 
-  private async create(
-    req: Request<{}, {}, { lang: string; data: string[] }>,
-    res: Response
-  ) {
-    const { lang, data } = req.body;
-    const createdTranslationFile = await TranslationFileService.create(
-      lang,
-      data
-    );
-    res.send(createdTranslationFile);
+  @Get("/{_id}")
+  @Example<ITranslationFileDoc>(EX.read)
+  public async read(@Path() _id: string): Promise<ITranslationFileDoc> {
+    return await TranslationFileService.read(_id);
   }
 
-  private async read(req: IReadRequest, res: Response) {
-    const { _id } = req.params;
-    const translationFile = await TranslationFileService.read(_id);
-    res.send(translationFile);
+  @Post("/update/{_id}")
+  @Example<ITranslationFileDoc>(EX.update)
+  public async update(
+    @Path() _id: string,
+    @Body() body: Partial<ITranslationFile>
+  ): Promise<ITranslationFileDoc> {
+    return await TranslationFileService.update(_id, body);
   }
 
-  private async update(
-    req: Request<{ _id: string }, {}, { translationFile: ITranslationFile }>,
-    res: Response
-  ) {
-    const { _id } = req.params;
-    const { translationFile } = req.body;
-    const updatedTranslationFile = await TranslationFileService.update(
-      _id,
-      translationFile
-    );
-    res.send(updatedTranslationFile);
-  }
-
-  private async delete(req: IDeleteRequest, res: Response) {
-    const { _id } = req.params;
-    const deletedTranslationFile = await TranslationFileService.delete(_id);
-    res.send(deletedTranslationFile);
+  @Delete("/delete/{_id}")
+  @Example<ITranslationFileDoc>(EX.delete)
+  public async delete(@Path() _id: string): Promise<ITranslationFileDoc> {
+    return await TranslationFileService.delete(_id);
   }
 }

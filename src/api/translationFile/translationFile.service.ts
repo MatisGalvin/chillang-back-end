@@ -2,10 +2,10 @@ import { TranslationFileModel } from "./translationFile.model";
 import { ITranslationFile } from "./translationFile.typing";
 
 export const TranslationFileService = {
-  create: async (lang: string, data: string[]) => {
+  create: async (body: ITranslationFile) => {
     const createdTranslationFile = await TranslationFileModel.create({
-      lang,
-      data,
+      lang: body.lang,
+      data: body.data,
     });
     return createdTranslationFile;
   },
@@ -20,10 +20,10 @@ export const TranslationFileService = {
     return translationFile;
   },
 
-  update: async (id: string, translationFile: ITranslationFile) => {
+  update: async (id: string, body: Partial<ITranslationFile>) => {
     const updatedTranslationFile = await TranslationFileModel.findByIdAndUpdate(
       id,
-      translationFile,
+      body,
       { new: true }
     );
     return updatedTranslationFile;

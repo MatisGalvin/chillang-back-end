@@ -19,7 +19,10 @@ export class Mongoose {
     mongoose
       .connect(this.url)
       .then(async (value) => {
-        this.showLog && console.log("DB connected successfully");
+        this.showLog &&
+          console.log(
+            `Database running on: http://${mongoose.connection.host}:${mongoose.connection.port}/${mongoose.connection.db.databaseName}`
+          );
         onConnected?.();
       })
       .catch((error) =>

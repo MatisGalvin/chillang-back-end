@@ -1,4 +1,4 @@
-import { IProjectReadAll } from "../project/project.typing";
+import { IProjectPopulatedDoc } from "../project/project.typing";
 
 export interface IUser {
   username: string;
@@ -6,9 +6,13 @@ export interface IUser {
   projects: string[];
 }
 
-export interface IUserReadAll {
+export interface IUserDoc extends IUser {
   _id: string;
-  username: string;
-  encryptedPassword: string;
-  projects: IProjectReadAll[];
 }
+
+export interface IUserPopulatedDoc extends Omit<IUserDoc, "projects"> {
+  projects: IProjectPopulatedDoc[];
+}
+
+export interface IUserCreateBody
+  extends Pick<IUser, "username" | "encryptedPassword"> {}

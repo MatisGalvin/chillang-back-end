@@ -6,29 +6,6 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"IPageDoc": {
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"translationFiles": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"_id": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"name",
-					"translationFiles",
-					"_id"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
 			"IPage": {
 				"properties": {
 					"name": {
@@ -91,7 +68,23 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"IPageRead": {
+			"Pick_IPageDoc.Exclude_keyofIPageDoc.translationFiles__": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"IPagePopulatedDoc": {
 				"properties": {
 					"_id": {
 						"type": "string"
@@ -113,6 +106,21 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"Partial_IPage_": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"translationFiles": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
 			},
 			"IProjectDoc": {
 				"properties": {
@@ -202,6 +210,42 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"Partial_IProject_": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"apiKey": {
+						"type": "string"
+					},
+					"pages": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"supportedLanguages": {
+						"items": {
+							"properties": {
+								"code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"code",
+								"name"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
 			"ITranslationFile": {
 				"properties": {
 					"lang": {
@@ -217,6 +261,153 @@
 				"required": [
 					"lang",
 					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_ITranslationFile_": {
+				"properties": {
+					"lang": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ITranslationFileDataItem"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"Pick_IProjectDoc.Exclude_keyofIProjectDoc.pages__": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"apiKey": {
+						"type": "string"
+					},
+					"supportedLanguages": {
+						"items": {
+							"properties": {
+								"code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"code",
+								"name"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"apiKey",
+					"supportedLanguages"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"IProjectPopulatedDoc": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"apiKey": {
+						"type": "string"
+					},
+					"supportedLanguages": {
+						"items": {
+							"properties": {
+								"code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"code",
+								"name"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"pages": {
+						"items": {
+							"$ref": "#/components/schemas/IPagePopulatedDoc"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"apiKey",
+					"supportedLanguages",
+					"pages"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Pick_IUserDoc.Exclude_keyofIUserDoc.projects__": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"encryptedPassword": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"username",
+					"encryptedPassword"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"IUserPopulatedDoc": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"encryptedPassword": {
+						"type": "string"
+					},
+					"projects": {
+						"items": {
+							"$ref": "#/components/schemas/IProjectPopulatedDoc"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"_id",
+					"username",
+					"encryptedPassword",
+					"projects"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -243,21 +434,82 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"IUserCreateBody": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"encryptedPassword": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"encryptedPassword"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserDoc": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"encryptedPassword": {
+						"type": "string"
+					},
+					"projects": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"_id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"encryptedPassword",
+					"projects",
+					"_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_IUser_": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"encryptedPassword": {
+						"type": "string"
+					},
+					"projects": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
 			}
 		},
 		"securitySchemes": {}
 	},
 	"info": {
-		"title": "nodejs-es6-boilerplate",
+		"title": "chillang-server",
 		"version": "1.0.1",
-		"description": "Node.js boilerplate with ES6, ESLint, and Prettier",
+		"description": "This is the documentation for our project : Chillang ! If you have any questions, feel free to ask us ! You will find an example for every controller and a possibility to try it. The request need a parameter ? Swagger will tell you ! You want to know the structure of a response ? Just send a request.",
 		"license": {
-			"name": "MIT"
+			"name": "unlicense"
 		},
 		"contact": {
-			"name": "Veri Ferdiansyah",
-			"email": "veri.ferdi@gmail.com",
-			"url": "https://vferdiansyah.github.io"
+			"name": "Anaïs Galisson and Robin Lebhar",
+			"email": "rob@gmail.com",
+			"url": "https://github.com/Chill-Studio/chillang-back-end"
 		}
 	},
 	"openapi": "3.0.0",
@@ -272,7 +524,7 @@
 							"application/json": {
 								"schema": {
 									"items": {
-										"$ref": "#/components/schemas/IPageDoc"
+										"$ref": "#/components/schemas/IPage"
 									},
 									"type": "array"
 								},
@@ -372,7 +624,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPageDoc"
+									"$ref": "#/components/schemas/IPage"
 								},
 								"examples": {
 									"Example 1": {
@@ -415,7 +667,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPageRead"
+									"$ref": "#/components/schemas/IPagePopulatedDoc"
 								},
 								"examples": {
 									"Example 1": {
@@ -478,7 +730,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPageDoc"
+									"$ref": "#/components/schemas/IPage"
 								},
 								"examples": {
 									"Example 1": {
@@ -514,7 +766,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/IPage"
+								"$ref": "#/components/schemas/Partial_IPage_"
 							}
 						}
 					}
@@ -530,7 +782,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPageDoc"
+									"$ref": "#/components/schemas/IPage"
 								},
 								"examples": {
 									"Example 1": {
@@ -748,6 +1000,33 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/IProjectDoc"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e9308acd7c2712c87db776",
+											"name": "Chillax",
+											"apiKey": "macledapi",
+											"pages": [
+												"61e6d2afbc63fbd022d3a8ab",
+												"61eabacbff17a349b40932cd"
+											],
+											"supportedLanguages": [
+												{
+													"name": "United Kingdom",
+													"code": "GB"
+												},
+												{
+													"name": "France",
+													"code": "FR"
+												},
+												{
+													"name": "Spain",
+													"code": "ES"
+												}
+											]
+										}
+									}
 								}
 							}
 						}
@@ -779,6 +1058,33 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/IProjectDoc"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e9308acd7c2712c87db776",
+											"name": "Mon projet qui est update",
+											"apiKey": "doncAvecUneNouvelleApiKey",
+											"pages": [
+												"61e6d2afbc63fbd022d3a8ab",
+												"61eabacbff17a349b40932cd"
+											],
+											"supportedLanguages": [
+												{
+													"name": "United Kingdom",
+													"code": "GB"
+												},
+												{
+													"name": "France",
+													"code": "FR"
+												},
+												{
+													"name": "Spain",
+													"code": "ES"
+												}
+											]
+										}
+									}
 								}
 							}
 						}
@@ -803,7 +1109,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/IProject"
+								"$ref": "#/components/schemas/Partial_IProject_"
 							}
 						}
 					}
@@ -820,6 +1126,33 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/IProjectDoc"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e9308acd7c2712c87db776",
+											"name": "Chillax",
+											"apiKey": "macledapi",
+											"pages": [
+												"61e6d2afbc63fbd022d3a8ab",
+												"61eabacbff17a349b40932cd"
+											],
+											"supportedLanguages": [
+												{
+													"name": "United Kingdom",
+													"code": "GB"
+												},
+												{
+													"name": "France",
+													"code": "FR"
+												},
+												{
+													"name": "Spain",
+													"code": "ES"
+												}
+											]
+										}
+									}
 								}
 							}
 						}
@@ -1210,7 +1543,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/ITranslationFile"
+								"$ref": "#/components/schemas/Partial_ITranslationFile_"
 							}
 						}
 					}
@@ -1273,9 +1606,52 @@
 							"application/json": {
 								"schema": {
 									"items": {
-										"$ref": "#/components/schemas/IUser"
+										"$ref": "#/components/schemas/IUserPopulatedDoc"
 									},
 									"type": "array"
+								},
+								"examples": {
+									"Example 1": {
+										"value": [
+											{
+												"_id": "zadefr",
+												"encryptedPassword": "zadefrg",
+												"username": "zefgr",
+												"projects": [
+													{
+														"_id": "eazfr",
+														"apiKey": "azqfsr",
+														"name": "aszdefgr",
+														"supportedLanguages": [
+															{
+																"code": "zdefr",
+																"name": "azdefr"
+															}
+														],
+														"pages": [
+															{
+																"name": "a  zdefr",
+																"_id": "azdefrg",
+																"translationFiles": [
+																	{
+																		"_id": "azef",
+																		"lang": "FR",
+																		"data": [
+																			{
+																				"id": "blabla",
+																				"value": "Jambon",
+																				"description": "azefrg"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
 								}
 							}
 						}
@@ -1286,6 +1662,213 @@
 				],
 				"security": [],
 				"parameters": []
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUser"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"username": "Matis",
+											"encryptedPassword": "mdpsamere",
+											"projects": [],
+											"_id": "620525ddb512406f6d23ae68"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IUserCreateBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/{_id}": {
+			"get": {
+				"operationId": "Read",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUserPopulatedDoc"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e80f089810ec398b36e8f2",
+											"username": "Anais",
+											"encryptedPassword": "motdepasseupdated",
+											"projects": [
+												{
+													"_id": "61e9308acd7c2712c87db776",
+													"name": "Chillax",
+													"apiKey": "macledapi",
+													"pages": [
+														{
+															"_id": "61e6d2afbc63fbd022d3a8ab",
+															"name": "Home",
+															"translationFiles": [
+																{
+																	"_id": "61faac320fa2d3394df5fd0b",
+																	"lang": "FR",
+																	"data": [
+																		{
+																			"id": "hello",
+																			"value": "Bonjour les amis",
+																			"description": "Description page accueil petit message"
+																		}
+																	]
+																}
+															]
+														}
+													],
+													"supportedLanguages": [
+														{
+															"name": "United Kingdom",
+															"code": "GB"
+														}
+													]
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "_id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/update/{_id}": {
+			"post": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUserDoc"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e80f089810ec398b36e8f2",
+											"username": "Nanaïs",
+											"encryptedPassword": "newpwd",
+											"projects": []
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "_id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_IUser_"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/delete/{_id}": {
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUserDoc"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"_id": "61e80f089810ec398b36e8f2",
+											"username": "Anais",
+											"encryptedPassword": "motdepasseupdated",
+											"projects": [
+												"61e9308acd7c2712c87db776",
+												"6202c5e64dc377b8a73b33c8"
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "_id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
 			}
 		}
 	},

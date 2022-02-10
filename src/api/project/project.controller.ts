@@ -19,22 +19,22 @@ export class ProjectController {
   }
 
   @Get("/{_id}")
-  // @Example<IProject>(EX.read)
+  @Example<IProjectDoc>(EX.read)
   public async read(@Path() _id: string): Promise<IProjectDoc> {
     return await ProjectService.read(_id);
   }
 
   @Post("/update/{_id}")
-  // @Example<IProject>(EX.update)
+  @Example<IProjectDoc>(EX.update)
   public async update(
     @Path() _id: string,
-    @Body() body: IProject
+    @Body() body: Partial<IProject>
   ): Promise<IProjectDoc> {
     return await ProjectService.update(_id, body);
   }
 
   @Delete("/delete/{_id}")
-  // @Example<IProject>(EX.delete)
+  @Example<IProjectDoc>(EX.delete)
   public async delete(@Path() _id: string): Promise<IProjectDoc> {
     return await ProjectService.delete(_id);
   }

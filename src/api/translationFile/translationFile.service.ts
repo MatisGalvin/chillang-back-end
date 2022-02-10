@@ -20,7 +20,7 @@ export const TranslationFileService = {
     return translationFile;
   },
 
-  update: async (id: string, body: ITranslationFile) => {
+  update: async (id: string, body: Partial<ITranslationFile>) => {
     const updatedTranslationFile = await TranslationFileModel.findByIdAndUpdate(
       id,
       body,

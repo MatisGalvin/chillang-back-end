@@ -1,5 +1,6 @@
+import { ITranslationFileDoc } from "../translationFile/translationFile.typing";
 import { PageModel } from "./page.model";
-import { IPage, IPageRead } from "./page.typing";
+import { IPage, IPageDoc, IPagePopulatedDoc } from "./page.typing";
 
 export const PageService = {
   create: async (body: IPage) => {
@@ -16,13 +17,15 @@ export const PageService = {
   },
 
   read: async (id: string) => {
-    const pages: IPageRead = await PageModel.findById(id).populate({
+    const page = await PageModel.findById(id).populate<{
+      translationFiles: ITranslationFileDoc[];
+    }>({
       path: "translationFiles",
     });
-    return pages;
+    return page;
   },
 
-  update: async (id: string, page: IPage) => {
+  update: async (id: string, page: Partial<IPage>) => {
     const updatedPage = await PageModel.findByIdAndUpdate(id, page, {
       new: true,
     });

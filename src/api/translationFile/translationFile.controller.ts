@@ -43,7 +43,7 @@ export class TranslationFileController extends Controller {
   @Example<ITranslationFileDoc>(EX.update)
   public async update(
     @Path() _id: string,
-    @Body() body: ITranslationFile
+    @Body() body: Partial<ITranslationFile>
   ): Promise<ITranslationFileDoc> {
     return await TranslationFileService.update(_id, body);
   }

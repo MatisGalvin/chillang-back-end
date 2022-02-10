@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { IProject } from "./project.typing";
-import { COLLECTION_NAMES } from "../../mongoose/constants";
 
 const Schema = mongoose.Schema;
 
@@ -11,7 +10,7 @@ const ProjectSchema = new Schema<IProject>(
     pages: [
       {
         type: Schema.Types.ObjectId,
-        ref: COLLECTION_NAMES.PAGE,
+        ref: "Page",
       },
     ],
     supportedLanguages: [
@@ -25,9 +24,6 @@ const ProjectSchema = new Schema<IProject>(
   { versionKey: false }
 );
 
-const ProjectModel = mongoose.model<IProject>(
-  COLLECTION_NAMES.PROJECT,
-  ProjectSchema
-);
+const ProjectModel = mongoose.model<IProject>("Project", ProjectSchema);
 
 export { ProjectModel };

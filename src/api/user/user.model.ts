@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { IUser } from "./user.typing";
-import { COLLECTION_NAMES } from "../../mongoose/constants";
 import "../project/project.model";
 import "../page/page.model";
 import "../translationFile/translationFile.model";
@@ -14,13 +13,13 @@ const UserSchema = new Schema<IUser>(
     projects: [
       {
         type: Schema.Types.ObjectId,
-        ref: COLLECTION_NAMES.PROJECT,
+        ref: "Project",
       },
     ],
   },
   { versionKey: false }
 );
 
-const UserModel = mongoose.model<IUser>(COLLECTION_NAMES.USER, UserSchema);
+const UserModel = mongoose.model<IUser>("User", UserSchema);
 
 export { UserModel };

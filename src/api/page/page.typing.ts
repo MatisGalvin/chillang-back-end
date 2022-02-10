@@ -8,8 +8,6 @@ export interface IPageDoc extends IPage {
   _id: string;
 }
 
-export interface IPageRead {
-  _id: string;
-  name: string;
+export interface IPagePopulatedDoc extends Omit<IPageDoc, "translationFiles"> {
   translationFiles: ITranslationFileDoc[];
 }

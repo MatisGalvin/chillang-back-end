@@ -1,5 +1,5 @@
 import { PageService } from "./page.service";
-import { IPage, IPageDoc, IPageRead } from "./page.typing";
+import { IPage, IPageDoc, IPagePopulatedDoc } from "./page.typing";
 import { Body, Delete, Example, Get, Path, Post, Route, Tags } from "tsoa";
 import { EX } from "./page.swagger";
 
@@ -7,35 +7,35 @@ import { EX } from "./page.swagger";
 @Tags("Page")
 export class PageController {
   @Get("/")
-  @Example<IPageDoc[]>(EX.readAll)
-  public async readAll(): Promise<IPageDoc[]> {
+  @Example<IPage[]>(EX.readAll)
+  public async readAll(): Promise<IPage[]> {
     return await PageService.readAll();
   }
 
   @Post("/")
-  @Example<IPageDoc>(EX.create)
-  public async create(@Body() body: IPage): Promise<IPageDoc> {
+  @Example<IPage>(EX.create)
+  public async create(@Body() body: IPage): Promise<IPage> {
     return await PageService.create(body);
   }
 
   @Get("/{_id}")
-  @Example<IPageRead>(EX.read)
-  public async read(@Path() _id: string): Promise<IPageRead> {
+  @Example<IPagePopulatedDoc>(EX.read)
+  public async read(@Path() _id: string): Promise<IPagePopulatedDoc> {
     return await PageService.read(_id);
   }
 
   @Post("/update/{_id}")
-  @Example<IPageDoc>(EX.update)
+  @Example<IPage>(EX.update)
   public async update(
     @Path() _id: string,
-    @Body() body: IPage
-  ): Promise<IPageDoc> {
+    @Body() body: Partial<IPage>
+  ): Promise<IPage> {
     return await PageService.update(_id, body);
   }
 
   @Delete("/delete/{_id}")
-  @Example<IPageDoc>(EX.delete)
-  public async delete(@Path() _id: string): Promise<IPageDoc> {
+  @Example<IPage>(EX.delete)
+  public async delete(@Path() _id: string): Promise<IPage> {
     return await PageService.delete(_id);
   }
 }

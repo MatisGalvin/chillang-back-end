@@ -1,3 +1,5 @@
+import { IPagePopulatedDoc } from "../page/page.typing";
+
 export interface IProject {
   name: string;
   apiKey: string;
@@ -10,4 +12,8 @@ export interface IProject {
 
 export interface IProjectDoc extends IProject {
   _id: string;
+}
+
+export interface IProjectPopulatedDoc extends Omit<IProjectDoc, "pages"> {
+  pages: IPagePopulatedDoc[];
 }

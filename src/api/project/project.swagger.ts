@@ -97,6 +97,66 @@ const EX = {
     ],
     _id: "620424e61fe09338aebd3505",
   },
+  read: {
+    _id: "61e9308acd7c2712c87db776",
+    name: "Chillax",
+    apiKey: "macledapi",
+    pages: ["61e6d2afbc63fbd022d3a8ab", "61eabacbff17a349b40932cd"],
+    supportedLanguages: [
+      {
+        name: "United Kingdom",
+        code: "GB",
+      },
+      {
+        name: "France",
+        code: "FR",
+      },
+      {
+        name: "Spain",
+        code: "ES",
+      },
+    ],
+  },
+  update: {
+    _id: "61e9308acd7c2712c87db776",
+    name: "Mon projet qui est update",
+    apiKey: "doncAvecUneNouvelleApiKey",
+    pages: ["61e6d2afbc63fbd022d3a8ab", "61eabacbff17a349b40932cd"],
+    supportedLanguages: [
+      {
+        name: "United Kingdom",
+        code: "GB",
+      },
+      {
+        name: "France",
+        code: "FR",
+      },
+      {
+        name: "Spain",
+        code: "ES",
+      },
+    ],
+  },
+  delete: {
+    _id: "61e9308acd7c2712c87db776",
+    name: "Chillax",
+    apiKey: "macledapi",
+    pages: ["61e6d2afbc63fbd022d3a8ab", "61eabacbff17a349b40932cd"],
+    supportedLanguages: [
+      {
+        name: "United Kingdom",
+        code: "GB",
+      },
+      {
+        name: "France",
+        code: "FR",
+      },
+      {
+        name: "Spain",
+        code: "ES",
+      },
+    ],
+  },
 };
 
 export { EX };

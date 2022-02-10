@@ -1,51 +1,47 @@
 import { UserService } from "./user.service";
 import { Express, Request, Response } from "express";
-import { IDeleteRequest, IReadRequest } from "../../typings/request.typing";
-import { IUser, IUserReadAll } from "./user.typing";
 import { EX } from "./user.swagger";
-import { Example, Get, Route, Tags } from "tsoa";
+import { Example, Get, Route, Tags, Path, Body, Post, Delete } from "tsoa";
+import {
+  IUser,
+  IUserCreateBody,
+  IUserDoc,
+  IUserPopulatedDoc,
+} from "./user.typing";
 
 @Route("/users")
 @Tags("Users")
 export class UserController {
   @Get("/")
-  // @Example<IUser[]>(EX.readAll)
-  public async readAll(): Promise<IUser[]> {
+  @Example<IUserPopulatedDoc[]>(EX.readAll)
+  public async readAll(): Promise<IUserPopulatedDoc[]> {
     return await UserService.readAll();
   }
-  private async read(req: IReadRequest, res: Response) {
-    const { _id } = req.params;
-    const user = await UserService.read(_id);
-    res.send(user);
+
+  @Post("/")
+  @Example<IUser>(EX.create)
+  public async create(@Body() body: IUserCreateBody): Promise<IUser> {
+    return await UserService.create(body);
   }
-  private async create(
-    req: Request<
-      {},
-      {},
-      { username: string; encryptedPassword: string; projects: string[] }
-    >,
-    res: Response
-  ) {
-    const { username, encryptedPassword, projects } = req.body;
-    const createdUser = await UserService.create(
-      username,
-      encryptedPassword,
-      projects
-    );
-    res.send(createdUser);
+
+  @Get("/{_id}")
+  @Example<IUserPopulatedDoc>(EX.read)
+  public async read(@Path() _id: string): Promise<IUserPopulatedDoc> {
+    return await UserService.read(_id);
   }
-  private async update(
-    req: Request<{ _id: string }, {}, { user: IUser }>,
-    res: Response
-  ) {
-    const { _id } = req.params;
-    const { user } = req.body;
-    const updatedUser = await UserService.update(_id, user);
-    res.send(updatedUser);
+
+  @Post("/update/{_id}")
+  @Example<IUserDoc>(EX.update)
+  public async update(
+    @Path() _id: string,
+    @Body() body: Partial<IUser>
+  ): Promise<IUserDoc> {
+    return await UserService.update(_id, body);
   }
-  private async delete(req: IDeleteRequest, res: Response) {
-    const { _id } = req.params;
-    const deletedUser = await UserService.delete(_id);
-    res.send(deletedUser);
+
+  @Delete("/delete/{_id}")
+  @Example<IUserDoc>(EX.delete)
+  public async delete(@Path() _id: string): Promise<IUserDoc> {
+    return await UserService.delete(_id);
   }
 }

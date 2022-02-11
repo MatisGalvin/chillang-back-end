@@ -1,5 +1,5 @@
 import write from "write";
-import { serviceTemplate } from "../templates/service-template";
+import { serviceTemplate } from "../templates/service-template.script";
 
 export const serviceGenerator = {
   generateCode(serviceName: string) {

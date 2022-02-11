@@ -1,6 +1,6 @@
 import mongoose, { model, mongo } from "mongoose";
-import { importDatabase } from "../scripts/mongo";
 import { resolve } from "path";
+import restore from "mongodb-restore-dump";
 
 /**
  * Mongoose class in charge of connecting and showing an error in case of connection failure
@@ -45,7 +45,7 @@ export class Mongoose {
       const pathToDBFakeDump = resolve(
         "./src/mongoose/dump/testData/chillangDatabase"
       );
-      importDatabase(
+      this.importDatabase(
         `mongodb://${mongoose.connection.host}:${mongoose.connection.port}/`,
         mongoose.connection.db.databaseName,
         pathToDBFakeDump
@@ -63,5 +63,17 @@ export class Mongoose {
     mongoose.connection.close(() => {
       onClose?.();
     });
+  }
+
+  // Use "restore" library to import database data from a folder that contains db export files.
+  async importDatabase(uri: string, dbName: string, dbDumpFolder: string) {
+    await restore.database({
+      uri,
+      database: dbName,
+      from: dbDumpFolder,
+    });
+    console.log(
+      `Done importing database from dump located in ${dbDumpFolder}. `
+    );
   }
 }

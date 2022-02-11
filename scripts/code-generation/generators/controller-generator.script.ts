@@ -1,5 +1,5 @@
 import write from "write";
-import { controllerTemplate } from "../templates/controller-template";
+import { controllerTemplate } from "../templates/controller-template.script";
 
 export const controllerGenerator = {
   generateCode(controllerName: string) {

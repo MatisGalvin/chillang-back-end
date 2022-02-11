@@ -1,4 +1,4 @@
-import { toPascalCase } from "../utils";
+import { toPascalCase } from "../utils.script";
 
 export const modelTemplate = (name: string) => {
   const pascalName = toPascalCase(name);

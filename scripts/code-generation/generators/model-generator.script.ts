@@ -1,5 +1,5 @@
 import write from "write";
-import { modelTemplate } from "../templates/model-template";
+import { modelTemplate } from "../templates/model-template.script";
 
 export const modelGenerator = {
   generateCode(modelName: string) {

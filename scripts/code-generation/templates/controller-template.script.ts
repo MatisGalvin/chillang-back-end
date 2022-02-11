@@ -1,4 +1,4 @@
-import { toPascalCase } from "../utils";
+import { toPascalCase } from "../utils.script";
 export const controllerTemplate = (name: string) => {
   const namePascal = toPascalCase(name);
   return `import { ${namePascal}Service } from "./${name}.service";

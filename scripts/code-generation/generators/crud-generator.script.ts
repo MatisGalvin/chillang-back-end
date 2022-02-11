@@ -1,9 +1,9 @@
 import { exit } from "process";
-import { controllerGenerator } from "./controller-generator";
-import { modelGenerator } from "./model-generator";
-import { serviceGenerator } from "./service-generator";
-import { swaggerGenerator } from "./swagger-generator";
-import { typingGenerator } from "./typing.generator";
+import { controllerGenerator } from "./controller-generator.script";
+import { modelGenerator } from "./model-generator.script";
+import { serviceGenerator } from "./service-generator.script";
+import { swaggerGenerator } from "./swagger-generator.script";
+import { typingGenerator } from "./typing.generator.script";
 
 const params = process.argv.slice(2, process.argv.length);
 if (params.length !== 1) {

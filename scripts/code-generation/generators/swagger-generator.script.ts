@@ -1,5 +1,5 @@
 import write from "write";
-import { swaggerTemplate } from "../templates/swagger-template";
+import { swaggerTemplate } from "../templates/swagger-template.script";
 
 export const swaggerGenerator = {
   generateCode(swaggerName: string) {

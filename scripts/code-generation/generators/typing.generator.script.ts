@@ -1,5 +1,5 @@
 import write from "write";
-import { typingTemplate } from "../templates/typing-template";
+import { typingTemplate } from "../templates/typing-template.script";
 
 export const typingGenerator = {
   generateCode(typingName: string) {

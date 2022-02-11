@@ -20,3 +20,9 @@ Run server :
 2. If you are on Windows, open this folder, go into "bin" folder (you will have all .exe files)
 3. Copy and add the path to your environnement variable.
 4. Open the project folder, then and CMD inside of it and do : mongodump -d chillangDatabase -o ./src/mongoose/dump/testData/
+
+## Code generation
+
+```shell
+yarn crud <apiName>
+```

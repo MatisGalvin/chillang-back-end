@@ -1,6 +1,6 @@
 {
-  "name": "chillang-server",
-  "version": "1.0.1",
+  "name": "back-end-boiler-plate",
+  "version": "1.0.0",
   "description": "A node express tsoa boiler plate made by Chill Studio ",
   "author": {
     "name": "Robin Lebhar",
@@ -17,7 +17,6 @@
     "build": "cross-env NODE_ENV=production yarn tsoa routes && npm run clean && npm run build-babel",
     "start": "cross-env NODE_ENV=development nodemon --watch \"./src/**/*.ts\" --exec \"tsoa routes && ts-node\" ./src/index.ts",
     "dev": "cross-env NODE_ENV=development nodemon --watch \"./src/**/*.ts\" --exec \"tsoa routes && tsoa swagger && ts-node\" ./src/index.ts",
-
     "format": "prettier --write \"src/**/*.js\"",
     "format:check": "prettier --list-different \"src/**/*.js\"",
     "lint": "eslint \"src/**/*.js\"",

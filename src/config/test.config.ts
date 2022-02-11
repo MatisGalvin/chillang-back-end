@@ -1,5 +1,5 @@
 /**
- *   Test configs
+ *   Test configs used when the test runs and also when
  */
 
 export const mongooseConfig = Object.freeze({

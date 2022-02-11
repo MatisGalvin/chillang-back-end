@@ -6,493 +6,25 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"IPage": {
+			"IJambonoDoc": {
 				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"translationFiles": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"name",
-					"translationFiles"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ITranslationFileDataItem": {
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"value": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"id",
-					"value",
-					"description"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"ITranslationFileDoc": {
-				"properties": {
-					"lang": {
-						"type": "string"
-					},
-					"data": {
-						"items": {
-							"$ref": "#/components/schemas/ITranslationFileDataItem"
-						},
-						"type": "array"
-					},
 					"_id": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"lang",
-					"data",
 					"_id"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_IPageDoc.Exclude_keyofIPageDoc.translationFiles__": {
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"_id",
-					"name"
-				],
-				"type": "object",
-				"description": "From T, pick a set of properties whose keys are in the union K"
-			},
-			"IPagePopulatedDoc": {
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"translationFiles": {
-						"items": {
-							"$ref": "#/components/schemas/ITranslationFileDoc"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"_id",
-					"name",
-					"translationFiles"
-				],
+			"IJambono": {
+				"properties": {},
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Partial_IPage_": {
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"translationFiles": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					}
-				},
-				"type": "object",
-				"description": "Make all properties in T optional"
-			},
-			"IProjectDoc": {
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"apiKey": {
-						"type": "string"
-					},
-					"pages": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"supportedLanguages": {
-						"items": {
-							"properties": {
-								"code": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"code",
-								"name"
-							],
-							"type": "object"
-						},
-						"type": "array"
-					},
-					"_id": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"name",
-					"apiKey",
-					"pages",
-					"supportedLanguages",
-					"_id"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IProject": {
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"apiKey": {
-						"type": "string"
-					},
-					"pages": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"supportedLanguages": {
-						"items": {
-							"properties": {
-								"code": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"code",
-								"name"
-							],
-							"type": "object"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"name",
-					"apiKey",
-					"pages",
-					"supportedLanguages"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Partial_IProject_": {
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"apiKey": {
-						"type": "string"
-					},
-					"pages": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"supportedLanguages": {
-						"items": {
-							"properties": {
-								"code": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"code",
-								"name"
-							],
-							"type": "object"
-						},
-						"type": "array"
-					}
-				},
-				"type": "object",
-				"description": "Make all properties in T optional"
-			},
-			"ITranslationFile": {
-				"properties": {
-					"lang": {
-						"type": "string"
-					},
-					"data": {
-						"items": {
-							"$ref": "#/components/schemas/ITranslationFileDataItem"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"lang",
-					"data"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Partial_ITranslationFile_": {
-				"properties": {
-					"lang": {
-						"type": "string"
-					},
-					"data": {
-						"items": {
-							"$ref": "#/components/schemas/ITranslationFileDataItem"
-						},
-						"type": "array"
-					}
-				},
-				"type": "object",
-				"description": "Make all properties in T optional"
-			},
-			"Pick_IProjectDoc.Exclude_keyofIProjectDoc.pages__": {
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"apiKey": {
-						"type": "string"
-					},
-					"supportedLanguages": {
-						"items": {
-							"properties": {
-								"code": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"code",
-								"name"
-							],
-							"type": "object"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"_id",
-					"name",
-					"apiKey",
-					"supportedLanguages"
-				],
-				"type": "object",
-				"description": "From T, pick a set of properties whose keys are in the union K"
-			},
-			"IProjectPopulatedDoc": {
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"apiKey": {
-						"type": "string"
-					},
-					"supportedLanguages": {
-						"items": {
-							"properties": {
-								"code": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"code",
-								"name"
-							],
-							"type": "object"
-						},
-						"type": "array"
-					},
-					"pages": {
-						"items": {
-							"$ref": "#/components/schemas/IPagePopulatedDoc"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"_id",
-					"name",
-					"apiKey",
-					"supportedLanguages",
-					"pages"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Pick_IUserDoc.Exclude_keyofIUserDoc.projects__": {
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"username": {
-						"type": "string"
-					},
-					"encryptedPassword": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"_id",
-					"username",
-					"encryptedPassword"
-				],
-				"type": "object",
-				"description": "From T, pick a set of properties whose keys are in the union K"
-			},
-			"IUserPopulatedDoc": {
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"username": {
-						"type": "string"
-					},
-					"encryptedPassword": {
-						"type": "string"
-					},
-					"projects": {
-						"items": {
-							"$ref": "#/components/schemas/IProjectPopulatedDoc"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"_id",
-					"username",
-					"encryptedPassword",
-					"projects"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IUser": {
-				"properties": {
-					"username": {
-						"type": "string"
-					},
-					"encryptedPassword": {
-						"type": "string"
-					},
-					"projects": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"username",
-					"encryptedPassword",
-					"projects"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IUserCreateBody": {
-				"properties": {
-					"username": {
-						"type": "string"
-					},
-					"encryptedPassword": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"username",
-					"encryptedPassword"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"IUserDoc": {
-				"properties": {
-					"username": {
-						"type": "string"
-					},
-					"encryptedPassword": {
-						"type": "string"
-					},
-					"projects": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"_id": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"username",
-					"encryptedPassword",
-					"projects",
-					"_id"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"Partial_IUser_": {
-				"properties": {
-					"username": {
-						"type": "string"
-					},
-					"encryptedPassword": {
-						"type": "string"
-					},
-					"projects": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					}
-				},
+			"Partial_IJambono_": {
+				"properties": {},
 				"type": "object",
 				"description": "Make all properties in T optional"
 			}
@@ -502,19 +34,19 @@
 	"info": {
 		"title": "chillang-server",
 		"version": "1.0.1",
-		"description": "This is the documentation for our project : Chillang ! If you have any questions, feel free to ask us ! You will find an example for every controller and a possibility to try it. The request need a parameter ? Swagger will tell you ! You want to know the structure of a response ? Just send a request.",
+		"description": "A node express tsoa boiler plate made by Chill Studio ",
 		"license": {
 			"name": "unlicense"
 		},
 		"contact": {
-			"name": "Anaïs Galisson and Robin Lebhar",
-			"email": "rob@gmail.com",
-			"url": "https://github.com/Chill-Studio/chillang-back-end"
+			"name": "Robin Lebhar",
+			"email": "robin.lebhar.chill.studio@gmail.com",
+			"url": "https://github.com/Chill-Studio/back-end-boiler-plate"
 		}
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/pages": {
+		"/jambono": {
 			"get": {
 				"operationId": "ReadAll",
 				"responses": {
@@ -524,86 +56,13 @@
 							"application/json": {
 								"schema": {
 									"items": {
-										"$ref": "#/components/schemas/IPage"
+										"$ref": "#/components/schemas/IJambonoDoc"
 									},
 									"type": "array"
 								},
 								"examples": {
 									"Example 1": {
-										"value": [
-											{
-												"_id": "61e6d2afbc63fbd022d3a8ab",
-												"name": "Home",
-												"translationFiles": [
-													"61e6d2afbc63fbd022d3a8af",
-													"61faac320fa2d3394df5fd0b",
-													"61faac8d0fa2d3394df5fd0e"
-												]
-											},
-											{
-												"_id": "61eabacbff17a349b40932cd",
-												"name": "Disconnect",
-												"translationFiles": [
-													"6202b3fd4dc377b8a73b339a",
-													"6202b4424dc377b8a73b339b",
-													"6202b4704dc377b8a73b339c"
-												]
-											},
-											{
-												"_id": "6202c6504dc377b8a73b33cc",
-												"name": "Cooking",
-												"translationFiles": [
-													"6202c9904dc377b8a73b3400",
-													"6202c9b94dc377b8a73b3401",
-													"6202ca4d4dc377b8a73b3402"
-												]
-											},
-											{
-												"_id": "6202c6734dc377b8a73b33cd",
-												"name": "Recipies",
-												"translationFiles": [
-													"6202cb554dc377b8a73b3416",
-													"6202cb9a4dc377b8a73b3417",
-													"6202cbee4dc377b8a73b3418"
-												]
-											},
-											{
-												"_id": "6202cdb14dc377b8a73b3438",
-												"name": "CreatePlaylist",
-												"translationFiles": [
-													"6202ce794dc377b8a73b3440",
-													"6202cea34dc377b8a73b3441",
-													"6202cef64dc377b8a73b3442"
-												]
-											},
-											{
-												"_id": "6202cdca4dc377b8a73b343d",
-												"name": "SharePlaylist",
-												"translationFiles": [
-													"6202d05b4dc377b8a73b3456",
-													"6202d0814dc377b8a73b3457",
-													"6202d0ca4dc377b8a73b3458"
-												]
-											},
-											{
-												"_id": "6202d1fe4dc377b8a73b346a",
-												"name": "SearchPodcast",
-												"translationFiles": [
-													"61e6d2afbc63fbd022d3a8af",
-													"6202c9b94dc377b8a73b3401",
-													"6202cbee4dc377b8a73b3418"
-												]
-											},
-											{
-												"_id": "6202d2114dc377b8a73b346b",
-												"name": "publishSearchPodcast",
-												"translationFiles": [
-													"6202b3fd4dc377b8a73b339a",
-													"6202b4424dc377b8a73b339b",
-													"6202ca4d4dc377b8a73b3402"
-												]
-											}
-										]
+										"value": []
 									}
 								}
 							}
@@ -611,7 +70,7 @@
 					}
 				},
 				"tags": [
-					"Page"
+					"Jambono"
 				],
 				"security": [],
 				"parameters": []
@@ -624,16 +83,12 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPage"
+									"$ref": "#/components/schemas/IJambonoDoc"
 								},
 								"examples": {
 									"Example 1": {
 										"value": {
-											"name": "PageTesting",
-											"translationFiles": [
-												"61faac320fa2d3394df5fd0b"
-											],
-											"_id": "6203ed62d5dca5811fcb4c8b"
+											"_id": ""
 										}
 									}
 								}
@@ -642,7 +97,7 @@
 					}
 				},
 				"tags": [
-					"Page"
+					"Jambono"
 				],
 				"security": [],
 				"parameters": [],
@@ -651,14 +106,14 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/IPage"
+								"$ref": "#/components/schemas/IJambono"
 							}
 						}
 					}
 				}
 			}
 		},
-		"/pages/{_id}": {
+		"/jambono/{_id}": {
 			"get": {
 				"operationId": "Read",
 				"responses": {
@@ -667,37 +122,12 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPagePopulatedDoc"
+									"$ref": "#/components/schemas/IJambonoDoc"
 								},
 								"examples": {
 									"Example 1": {
 										"value": {
-											"_id": "61e6d2afbc63fbd022d3a8ab",
-											"name": "Home",
-											"translationFiles": [
-												{
-													"_id": "61faac320fa2d3394df5fd0b",
-													"lang": "FR",
-													"data": [
-														{
-															"id": "hello",
-															"value": "Bonjour les amis",
-															"description": "Description page accueil petit message"
-														}
-													]
-												},
-												{
-													"_id": "61faac8d0fa2d3394df5fd0e",
-													"lang": "ES",
-													"data": [
-														{
-															"id": "hello",
-															"value": "Hola ke tal",
-															"description": "Si tiendo para nadal y los churros"
-														}
-													]
-												}
-											]
+											"_id": ""
 										}
 									}
 								}
@@ -706,7 +136,7 @@
 					}
 				},
 				"tags": [
-					"Page"
+					"Jambono"
 				],
 				"security": [],
 				"parameters": [
@@ -721,7 +151,7 @@
 				]
 			}
 		},
-		"/pages/update/{_id}": {
+		"/jambono/update/{_id}": {
 			"post": {
 				"operationId": "Update",
 				"responses": {
@@ -730,16 +160,12 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPage"
+									"$ref": "#/components/schemas/IJambonoDoc"
 								},
 								"examples": {
 									"Example 1": {
 										"value": {
-											"_id": "61e6d2afbc63fbd022d3a8ab",
-											"name": "Test page update",
-											"translationFiles": [
-												"61faac320fa2d3394df5fd0b"
-											]
+											"_id": ""
 										}
 									}
 								}
@@ -748,7 +174,7 @@
 					}
 				},
 				"tags": [
-					"Page"
+					"Jambono"
 				],
 				"security": [],
 				"parameters": [
@@ -766,14 +192,14 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/Partial_IPage_"
+								"$ref": "#/components/schemas/Partial_IJambono_"
 							}
 						}
 					}
 				}
 			}
 		},
-		"/pages/delete/{_id}": {
+		"/jambono/delete/{_id}": {
 			"delete": {
 				"operationId": "Delete",
 				"responses": {
@@ -782,18 +208,12 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/IPage"
+									"$ref": "#/components/schemas/IJambonoDoc"
 								},
 								"examples": {
 									"Example 1": {
 										"value": {
-											"_id": "61e6d2afbc63fbd022d3a8ab",
-											"name": "Home",
-											"translationFiles": [
-												"61e6d2afbc63fbd022d3a8af",
-												"61faac320fa2d3394df5fd0b",
-												"61faac8d0fa2d3394df5fd0e"
-											]
+											"_id": ""
 										}
 									}
 								}
@@ -802,1061 +222,7 @@
 					}
 				},
 				"tags": [
-					"Page"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/projects": {
-			"get": {
-				"operationId": "ReadAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IProjectDoc"
-									},
-									"type": "array"
-								},
-								"examples": {
-									"Example 1": {
-										"value": [
-											{
-												"_id": "61e9308acd7c2712c87db776",
-												"name": "Chillax",
-												"apiKey": "macledapi",
-												"pages": [
-													"61e6d2afbc63fbd022d3a8ab",
-													"61eabacbff17a349b40932cd"
-												],
-												"supportedLanguages": [
-													{
-														"name": "United Kingdom",
-														"code": "GB"
-													},
-													{
-														"name": "France",
-														"code": "FR"
-													},
-													{
-														"name": "Spain",
-														"code": "ES"
-													}
-												]
-											},
-											{
-												"_id": "6202b57e4dc377b8a73b33b3",
-												"name": "Marmitton",
-												"apiKey": "apikeysecret",
-												"pages": [
-													"6202c6504dc377b8a73b33cc",
-													"6202c6734dc377b8a73b33cd"
-												],
-												"supportedLanguages": [
-													{
-														"name": "United Kingdom",
-														"code": "GB"
-													},
-													{
-														"name": "France",
-														"code": "FR"
-													},
-													{
-														"name": "Spain",
-														"code": "ES"
-													}
-												]
-											},
-											{
-												"_id": "6202c5e64dc377b8a73b33c8",
-												"name": "Deezer",
-												"apiKey": "deezerApiKey",
-												"pages": [
-													"6202cdb14dc377b8a73b3438",
-													"6202cdca4dc377b8a73b343d"
-												],
-												"supportedLanguages": [
-													{
-														"name": "United Kingdom",
-														"code": "GB"
-													},
-													{
-														"name": "France",
-														"code": "FR"
-													},
-													{
-														"name": "Spain",
-														"code": "ES"
-													}
-												]
-											},
-											{
-												"_id": "6202c6194dc377b8a73b33c9",
-												"name": "Twitch Podcast",
-												"apiKey": "balibaloApiKey",
-												"pages": [
-													"6202d1fe4dc377b8a73b346a",
-													"6202d2114dc377b8a73b346b"
-												],
-												"supportedLanguages": [
-													{
-														"name": "United Kingdom",
-														"code": "GB"
-													},
-													{
-														"name": "France",
-														"code": "FR"
-													},
-													{
-														"name": "Spain",
-														"code": "ES"
-													}
-												]
-											}
-										]
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Projects"
-				],
-				"security": [],
-				"parameters": []
-			},
-			"post": {
-				"operationId": "Create",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IProjectDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"name": "Tricotine",
-											"apiKey": "jetricoteforever",
-											"pages": [],
-											"supportedLanguages": [
-												{
-													"name": "United Kingdom",
-													"code": "GB"
-												},
-												{
-													"name": "France",
-													"code": "FR"
-												}
-											],
-											"_id": "620424e61fe09338aebd3505"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Projects"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/IProject"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/projects/{_id}": {
-			"get": {
-				"operationId": "Read",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IProjectDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "61e9308acd7c2712c87db776",
-											"name": "Chillax",
-											"apiKey": "macledapi",
-											"pages": [
-												"61e6d2afbc63fbd022d3a8ab",
-												"61eabacbff17a349b40932cd"
-											],
-											"supportedLanguages": [
-												{
-													"name": "United Kingdom",
-													"code": "GB"
-												},
-												{
-													"name": "France",
-													"code": "FR"
-												},
-												{
-													"name": "Spain",
-													"code": "ES"
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Projects"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/projects/update/{_id}": {
-			"post": {
-				"operationId": "Update",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IProjectDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "61e9308acd7c2712c87db776",
-											"name": "Mon projet qui est update",
-											"apiKey": "doncAvecUneNouvelleApiKey",
-											"pages": [
-												"61e6d2afbc63fbd022d3a8ab",
-												"61eabacbff17a349b40932cd"
-											],
-											"supportedLanguages": [
-												{
-													"name": "United Kingdom",
-													"code": "GB"
-												},
-												{
-													"name": "France",
-													"code": "FR"
-												},
-												{
-													"name": "Spain",
-													"code": "ES"
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Projects"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/Partial_IProject_"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/projects/delete/{_id}": {
-			"delete": {
-				"operationId": "Delete",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IProjectDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "61e9308acd7c2712c87db776",
-											"name": "Chillax",
-											"apiKey": "macledapi",
-											"pages": [
-												"61e6d2afbc63fbd022d3a8ab",
-												"61eabacbff17a349b40932cd"
-											],
-											"supportedLanguages": [
-												{
-													"name": "United Kingdom",
-													"code": "GB"
-												},
-												{
-													"name": "France",
-													"code": "FR"
-												},
-												{
-													"name": "Spain",
-													"code": "ES"
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Projects"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/translationFiles": {
-			"get": {
-				"operationId": "ReadAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/ITranslationFileDoc"
-									},
-									"type": "array"
-								},
-								"examples": {
-									"Example 1": {
-										"value": [
-											{
-												"_id": "61faac320fa2d3394df5fd0b",
-												"lang": "FR",
-												"data": [
-													{
-														"id": "hello",
-														"value": "Bonjour les amis",
-														"description": "Description page accueil petit message"
-													}
-												]
-											},
-											{
-												"_id": "61faac8d0fa2d3394df5fd0e",
-												"lang": "ES",
-												"data": [
-													{
-														"id": "hello",
-														"value": "Hola ke tal",
-														"description": "Si tiendo para nadal y los churros"
-													}
-												]
-											},
-											{
-												"_id": "6202b3fd4dc377b8a73b339a",
-												"lang": "GB",
-												"data": [
-													{
-														"id": "bye",
-														"value": "Bye bye, thanks !",
-														"description": "Go went gone, stach miles country "
-													}
-												]
-											},
-											{
-												"_id": "6202b4424dc377b8a73b339b",
-												"lang": "FR",
-												"data": [
-													{
-														"id": "bye",
-														"value": "Au revoir, merci !",
-														"description": "C est pour dire au revoir quoi"
-													}
-												]
-											},
-											{
-												"_id": "6202b4704dc377b8a73b339c",
-												"lang": "ES",
-												"data": [
-													{
-														"id": "bye",
-														"value": "Adios mutchatchos",
-														"description": "Comigo don miguel"
-													}
-												]
-											},
-											{
-												"_id": "6202c9904dc377b8a73b3400",
-												"lang": "GB",
-												"data": [
-													{
-														"id": "choose",
-														"value": "Hey, have you choose ? ",
-														"description": "You can select something to cook "
-													}
-												]
-											},
-											{
-												"_id": "6202c9b94dc377b8a73b3401",
-												"lang": "FR",
-												"data": [
-													{
-														"id": "choose",
-														"value": "Yo Tu as choisi un truc à graille ?",
-														"description": "choix du plat"
-													}
-												]
-											},
-											{
-												"_id": "6202ca4d4dc377b8a73b3402",
-												"lang": "ES",
-												"data": [
-													{
-														"id": "choose",
-														"value": "Elegiste un plato para comer?",
-														"description": "elección de plato"
-													}
-												]
-											},
-											{
-												"_id": "6202cb554dc377b8a73b3416",
-												"lang": "GB",
-												"data": [
-													{
-														"id": "addRecipe",
-														"value": "You can add a recipe to your list",
-														"description": "can add recipe into list "
-													}
-												]
-											},
-											{
-												"_id": "6202cb9a4dc377b8a73b3417",
-												"lang": "FR",
-												"data": [
-													{
-														"id": "addRecipe",
-														"value": "Tu peux ajouter une recette à ta liste",
-														"description": "ajout plat à la liste de coup de coeur"
-													}
-												]
-											},
-											{
-												"_id": "6202cbee4dc377b8a73b3418",
-												"lang": "ES",
-												"data": [
-													{
-														"id": "addRecipe",
-														"value": "Puedes añadir un plato a tu lista de favoritos",
-														"description": "receta añadida a favoritos"
-													}
-												]
-											},
-											{
-												"_id": "6202ce794dc377b8a73b3440",
-												"lang": "GB",
-												"data": [
-													{
-														"id": "NewPlaylist",
-														"value": "Do you want to create a new playlist ?",
-														"description": "add new playlist user profile"
-													}
-												]
-											},
-											{
-												"_id": "6202cea34dc377b8a73b3441",
-												"lang": "FR",
-												"data": [
-													{
-														"id": "NewPlaylist",
-														"value": "Tu veux créer une nouvelle playlist ?",
-														"description": "ajouter une nouvelle playlist au profil utilisateur"
-													}
-												]
-											},
-											{
-												"_id": "6202cef64dc377b8a73b3442",
-												"lang": "ES",
-												"data": [
-													{
-														"id": "NewPlaylist",
-														"value": "Quieres crear una nueva lista de reproducción?",
-														"description": "Agregar nueva lista de reproducción al perfil de usuario"
-													}
-												]
-											},
-											{
-												"_id": "6202d05b4dc377b8a73b3456",
-												"lang": "GB",
-												"data": [
-													{
-														"id": "SharePlaylist",
-														"value": "Do you want your playlist to be public or private ?",
-														"description": "select privacy playlist "
-													}
-												]
-											},
-											{
-												"_id": "6202d0814dc377b8a73b3457",
-												"lang": "FR",
-												"data": [
-													{
-														"id": "SharePlaylist",
-														"value": "Voulez vous que votre playlist soit publique ou privée ?",
-														"description": "Choix publique ou privé utilisateur"
-													}
-												]
-											},
-											{
-												"_id": "6202d0ca4dc377b8a73b3458",
-												"lang": "ES",
-												"data": [
-													{
-														"id": "SharePlaylist",
-														"value": "Quieres que tu lista de reproducción sea pública o privada?",
-														"description": "lista de reproducción pública o privada"
-													}
-												]
-											},
-											{
-												"_id": "6203d7056cc756ec3eb2b0c1",
-												"lang": "PR",
-												"data": [
-													{
-														"id": "hello",
-														"value": "Bonjour les amis",
-														"description": "Description page accueil petit message"
-													}
-												]
-											}
-										]
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Translation Files"
-				],
-				"security": [],
-				"parameters": []
-			},
-			"post": {
-				"operationId": "Create",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ITranslationFileDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"lang": "FR",
-											"data": [
-												{
-													"id": "fezrgt",
-													"value": "fsgfd",
-													"description": "stgtrhrtjhytfggring"
-												}
-											],
-											"_id": "6203e46c03c9fc05918bc56b"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Translation Files"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/ITranslationFile"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/translationFiles/{_id}": {
-			"get": {
-				"operationId": "Read",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ITranslationFileDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "61faac320fa2d3394df5fd0b",
-											"lang": "FR",
-											"data": [
-												{
-													"id": "hello",
-													"value": "Bonjour les amis",
-													"description": "Description page accueil petit message"
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Translation Files"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/translationFiles/update/{_id}": {
-			"post": {
-				"operationId": "Update",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ITranslationFileDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "6203d7056cc756ec3eb2b0c1",
-											"lang": "FR",
-											"data": [
-												{
-													"id": "testingUltime",
-													"value": "La valeur de mon test",
-													"description": "blablabla une petite description"
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Translation Files"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/Partial_ITranslationFile_"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/translationFiles/delete/{_id}": {
-			"delete": {
-				"operationId": "Delete",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/ITranslationFileDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "6203d7056cc756ec3eb2b0c1",
-											"lang": "PR",
-											"data": [
-												{
-													"id": "hello",
-													"value": "Bonjour les amis",
-													"description": "Description page accueil petit message"
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Translation Files"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/users": {
-			"get": {
-				"operationId": "ReadAll",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/IUserPopulatedDoc"
-									},
-									"type": "array"
-								},
-								"examples": {
-									"Example 1": {
-										"value": [
-											{
-												"_id": "zadefr",
-												"encryptedPassword": "zadefrg",
-												"username": "zefgr",
-												"projects": [
-													{
-														"_id": "eazfr",
-														"apiKey": "azqfsr",
-														"name": "aszdefgr",
-														"supportedLanguages": [
-															{
-																"code": "zdefr",
-																"name": "azdefr"
-															}
-														],
-														"pages": [
-															{
-																"name": "a  zdefr",
-																"_id": "azdefrg",
-																"translationFiles": [
-																	{
-																		"_id": "azef",
-																		"lang": "FR",
-																		"data": [
-																			{
-																				"id": "blabla",
-																				"value": "Jambon",
-																				"description": "azefrg"
-																			}
-																		]
-																	}
-																]
-															}
-														]
-													}
-												]
-											}
-										]
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Users"
-				],
-				"security": [],
-				"parameters": []
-			},
-			"post": {
-				"operationId": "Create",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IUser"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"username": "Matis",
-											"encryptedPassword": "mdpsamere",
-											"projects": [],
-											"_id": "620525ddb512406f6d23ae68"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Users"
-				],
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/IUserCreateBody"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/users/{_id}": {
-			"get": {
-				"operationId": "Read",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IUserPopulatedDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "61e80f089810ec398b36e8f2",
-											"username": "Anais",
-											"encryptedPassword": "motdepasseupdated",
-											"projects": [
-												{
-													"_id": "61e9308acd7c2712c87db776",
-													"name": "Chillax",
-													"apiKey": "macledapi",
-													"pages": [
-														{
-															"_id": "61e6d2afbc63fbd022d3a8ab",
-															"name": "Home",
-															"translationFiles": [
-																{
-																	"_id": "61faac320fa2d3394df5fd0b",
-																	"lang": "FR",
-																	"data": [
-																		{
-																			"id": "hello",
-																			"value": "Bonjour les amis",
-																			"description": "Description page accueil petit message"
-																		}
-																	]
-																}
-															]
-														}
-													],
-													"supportedLanguages": [
-														{
-															"name": "United Kingdom",
-															"code": "GB"
-														}
-													]
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Users"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				]
-			}
-		},
-		"/users/update/{_id}": {
-			"post": {
-				"operationId": "Update",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IUserDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "61e80f089810ec398b36e8f2",
-											"username": "Nanaïs",
-											"encryptedPassword": "newpwd",
-											"projects": []
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Users"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "_id",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/Partial_IUser_"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/users/delete/{_id}": {
-			"delete": {
-				"operationId": "Delete",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/IUserDoc"
-								},
-								"examples": {
-									"Example 1": {
-										"value": {
-											"_id": "61e80f089810ec398b36e8f2",
-											"username": "Anais",
-											"encryptedPassword": "motdepasseupdated",
-											"projects": [
-												"61e9308acd7c2712c87db776",
-												"6202c5e64dc377b8a73b33c8"
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Users"
+					"Jambono"
 				],
 				"security": [],
 				"parameters": [

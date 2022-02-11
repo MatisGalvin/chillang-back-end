@@ -1,4 +1,4 @@
-import { toPascalCase } from "../utils.script";
+import { toPascalCase } from "../../utils.script";
 
 export const serviceTemplate = (name: string) => {
   const pascalName = toPascalCase(name);
@@ -22,7 +22,7 @@ export const ${pascalName}Service = {
     return ${name};
   },
 
-  update: async (id: string, body: I${pascalName}) => {
+  update: async (id: string, body: Partial<I${pascalName}>) => {
     const updated${pascalName} = await ${pascalName}Model.findByIdAndUpdate(id, body, {
       new: true,
     });

@@ -2,7 +2,7 @@ import express, { Express } from "express";
 import bodyParser from "body-parser";
 import { Server as HttpServer } from "http";
 import morgan from "morgan";
-import { checkMongooseParamsIDIsValid } from "../middlewares/express.middlewares";
+import { checkMongooseParamsIDIsValid } from "../middlewares/express.middleware";
 import * as swaggerUI from "swagger-ui-express";
 import { RegisterRoutes } from "../../routes";
 import { SWAGGER_DOC_URL } from "../config/dev.config";
@@ -55,7 +55,7 @@ export class Server {
 
     // @todo : A FAIRE
     RegisterRoutes(this.expressServer);
-    this.generateDocumentation();
+    process.env.NODE_ENV === "development" && this.generateDocumentation();
 
     // Middleware that check on url must be called after the documentation has been generated
     this.expressServer.use("(/*/):_id", checkMongooseParamsIDIsValid);

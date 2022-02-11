@@ -1,4 +1,4 @@
-import { toPascalCase } from "../utils.script";
+import { toPascalCase, camelCaseToSentence } from "../../utils.script";
 export const controllerTemplate = (name: string) => {
   const namePascal = toPascalCase(name);
   return `import { ${namePascal}Service } from "./${name}.service";
@@ -16,8 +16,8 @@ import {
 } from "tsoa";
 import { EX } from "./${name}.swagger";
 
-@Route("/${name}s")
-@Tags("${namePascal}")
+@Route("/${name}")
+@Tags("${camelCaseToSentence(name)}")
 export class ${namePascal}Controller extends Controller {
   @Get("/")
   @Example<I${namePascal}Doc[]>(EX.readAll)
@@ -43,7 +43,7 @@ export class ${namePascal}Controller extends Controller {
   @Example<I${namePascal}Doc>(EX.update)
   public async update(
     @Path() _id: string,
-    @Body() body: I${namePascal}
+    @Body() body: Partial<I${namePascal}>
   ): Promise<I${namePascal}Doc> {
     return await ${namePascal}Service.update(_id, body);
   }

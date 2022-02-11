@@ -14,7 +14,7 @@ Run tests :
 Run server :
 `npm start`
 
-## Realize a dump
+## Dump local mongoose database
 
 1. Go to https://www.mongodb.com/try/download/database-tools?tck=docs_databasetools and download the tools.
 2. If you are on Windows, open this folder, go into "bin" folder (you will have all .exe files)

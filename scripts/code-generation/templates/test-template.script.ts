@@ -10,43 +10,43 @@ import { I${namePascal}Doc } from "./${name}.typing";
 const server = new Server().getExpressInstance();
 describe("${namePascal} API", () => {
 
-  it("/${name} (GET)", async () => {
+  it("/${name}s (GET)", async () => {
     await ${namePascal}Model.create({});
-    const response = await supertest(server).get("/${name}").set("Accept", "application/json");
+    const response = await supertest(server).get("/${name}s").set("Accept", "application/json");
     expect(response.status).toEqual(200);
     expect((response.body as I${namePascal}Doc[])[0]._id).toBeDefined()
   });
 
-  it("/${name}/:_id (GET)", async () => {
+  it("/${name}s/:_id (GET)", async () => {
     const created${namePascal} = await ${namePascal}Model.create({});
-    const response = await supertest(server).get("/${name}/" + created${namePascal}._id)
+    const response = await supertest(server).get("/${name}s/" + created${namePascal}._id)
     .set("Accept", "application/json");
     expect(response.status).toEqual(200);
     expect((response.body as I${namePascal}Doc)._id).toBeDefined()
   });
   
-  it("/${name}/update/:_id (POST)", async () => {
+  it("/${name}s/:_id (PATCH)", async () => {
     const created${namePascal} = await ${namePascal}Model.create({});
     const response = await supertest(server)
-      .post("/${name}/update/" + created${namePascal}._id)
+      .post("/${name}s/" + created${namePascal}._id)
       .set("Accept", "application/json")
       .send({});
     expect(response.status).toEqual(200);
     expect((response.body as I${namePascal}Doc)._id).toBeDefined()
   });
   
-  it("/${name}/delete/:_id (DELETE)", async () => {
+  it("/${name}s/:_id (DELETE)", async () => {
     const created${namePascal} = await ${namePascal}Model.create({});
     const response = await supertest(server)
-      .delete("/${name}/delete/" + created${namePascal}._id)
+      .delete("/${name}s/delete/" + created${namePascal}._id)
       .set("Accept", "application/json");
     expect(response.status).toEqual(200);
     expect((response.body as I${namePascal}Doc)._id).toBeDefined()
   });
   
-  it("/${name} (POST)", async () => {
+  it("/${name}s (POST)", async () => {
     const response = await supertest(server)
-      .post("/${name}")
+      .post("/${name}s")
       .set("Accept", "application/json")
       .send({});
     expect(response.status).toEqual(200);

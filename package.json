@@ -11,20 +11,18 @@
   "license": "unlicense",
   "homepage": "https://github.com/Chill-Studio/chillang-back-end#readme",
   "scripts": {
-    "test": "cross-env NODE_ENV=test yarn generate-controller-routes && jest",
+    "test": "cross-env NODE_ENV=test yarn tsoa routes && jest",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
-    "build": "cross-env NODE_ENV=production npm run clean && npm run build-babel",
-    "start": "cross-env NODE_ENV=development nodemon --watch \"./src/**/*.ts\" --exec \"yarn generate-routes & ts-node\" ./src/index.ts ",
-    "generate-controller-routes": "tsoa routes",
-    "generate-swagger-routes":"tsoa swagger",
-    "generate-routes": "yarn generate-controller-routes && yarn generate-swagger-routes",
-    "tsoaScript": "tsoa routes",
+    "build": "cross-env NODE_ENV=production yarn tsoa routes && npm run clean && npm run build-babel",
+    "start": "cross-env NODE_ENV=development nodemon --watch \"./src/**/*.ts\" --exec \"tsoa routes && ts-node\" ./src/index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --watch \"./src/**/*.ts\" --exec \"tsoa routes && tsoa swagger && ts-node\" ./src/index.ts",
+
     "format": "prettier --write \"src/**/*.js\"",
     "format:check": "prettier --list-different \"src/**/*.js\"",
     "lint": "eslint \"src/**/*.js\"",
     "lint:fix": "eslint --fix \"src/**/*.js\"",
-    "crud": "ts-node ./scripts/code-generation/crud.ts"
+    "crud": "ts-node ./scripts/code-generation/code-generators/crud.ts"
   },
   "repository": "github:vferdiansyah/nodejs-es6-boilerplate",
   "keywords": [

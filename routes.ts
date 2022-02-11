@@ -3,13 +3,13 @@
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, HttpStatusCodeLiteral, TsoaResponse } from '@tsoa/runtime';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { JambonoController } from './src/api/jambono/jambono.controller';
+import { YoloController } from './src/api/yolo/yolo.controller';
 import * as express from 'express';
 
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
-    "IJambonoDoc": {
+    "IYoloDoc": {
         "dataType": "refObject",
         "properties": {
             "_id": {"dataType":"string","required":true},
@@ -17,14 +17,14 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "IJambono": {
+    "IYolo": {
         "dataType": "refObject",
         "properties": {
         },
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Partial_IJambono_": {
+    "Partial_IYolo_": {
         "dataType": "refAlias",
         "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"validators":{}},
     },
@@ -39,9 +39,9 @@ export function RegisterRoutes(app: express.Router) {
     //  NOTE: If you do not see routes for all of your controllers in this file, then you might not have informed tsoa of where to look
     //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
     // ###########################################################################################################
-        app.get('/jambono',
+        app.get('/yolos',
 
-            function JambonoController_readAll(request: any, response: any, next: any) {
+            function YoloController_readAll(request: any, response: any, next: any) {
             const args = {
             };
 
@@ -51,7 +51,7 @@ export function RegisterRoutes(app: express.Router) {
             try {
                 validatedArgs = getValidatedArgs(args, request, response);
 
-                const controller = new JambonoController();
+                const controller = new YoloController();
 
 
               const promise = controller.readAll.apply(controller, validatedArgs as any);
@@ -61,11 +61,11 @@ export function RegisterRoutes(app: express.Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.post('/jambono',
+        app.post('/yolos',
 
-            function JambonoController_create(request: any, response: any, next: any) {
+            function YoloController_create(request: any, response: any, next: any) {
             const args = {
-                    body: {"in":"body","name":"body","required":true,"ref":"IJambono"},
+                    body: {"in":"body","name":"body","required":true,"ref":"IYolo"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -74,7 +74,7 @@ export function RegisterRoutes(app: express.Router) {
             try {
                 validatedArgs = getValidatedArgs(args, request, response);
 
-                const controller = new JambonoController();
+                const controller = new YoloController();
 
 
               const promise = controller.create.apply(controller, validatedArgs as any);
@@ -84,9 +84,9 @@ export function RegisterRoutes(app: express.Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.get('/jambono/:_id',
+        app.get('/yolos/:_id',
 
-            function JambonoController_read(request: any, response: any, next: any) {
+            function YoloController_read(request: any, response: any, next: any) {
             const args = {
                     _id: {"in":"path","name":"_id","required":true,"dataType":"string"},
             };
@@ -97,7 +97,7 @@ export function RegisterRoutes(app: express.Router) {
             try {
                 validatedArgs = getValidatedArgs(args, request, response);
 
-                const controller = new JambonoController();
+                const controller = new YoloController();
 
 
               const promise = controller.read.apply(controller, validatedArgs as any);
@@ -107,12 +107,12 @@ export function RegisterRoutes(app: express.Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.post('/jambono/update/:_id',
+        app.patch('/yolos/:_id',
 
-            function JambonoController_update(request: any, response: any, next: any) {
+            function YoloController_update(request: any, response: any, next: any) {
             const args = {
                     _id: {"in":"path","name":"_id","required":true,"dataType":"string"},
-                    body: {"in":"body","name":"body","required":true,"ref":"Partial_IJambono_"},
+                    body: {"in":"body","name":"body","required":true,"ref":"Partial_IYolo_"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -121,7 +121,7 @@ export function RegisterRoutes(app: express.Router) {
             try {
                 validatedArgs = getValidatedArgs(args, request, response);
 
-                const controller = new JambonoController();
+                const controller = new YoloController();
 
 
               const promise = controller.update.apply(controller, validatedArgs as any);
@@ -131,9 +131,9 @@ export function RegisterRoutes(app: express.Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.delete('/jambono/delete/:_id',
+        app.delete('/yolos/:_id',
 
-            function JambonoController_delete(request: any, response: any, next: any) {
+            function YoloController_delete(request: any, response: any, next: any) {
             const args = {
                     _id: {"in":"path","name":"_id","required":true,"dataType":"string"},
             };
@@ -144,7 +144,7 @@ export function RegisterRoutes(app: express.Router) {
             try {
                 validatedArgs = getValidatedArgs(args, request, response);
 
-                const controller = new JambonoController();
+                const controller = new YoloController();
 
 
               const promise = controller.delete.apply(controller, validatedArgs as any);

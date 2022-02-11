@@ -1,6 +1,6 @@
 import { toPascalCase } from "../../utils.script";
 
-export const typingTemplate = (name: string) => {
+export default (name: string) => {
   const namePascal = toPascalCase(name);
   return `export interface I${namePascal} {}
 

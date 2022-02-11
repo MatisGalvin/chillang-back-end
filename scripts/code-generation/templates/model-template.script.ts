@@ -1,6 +1,6 @@
 import { toPascalCase } from "../../utils.script";
 
-export const modelTemplate = (name: string) => {
+export default (name: string) => {
   const pascalName = toPascalCase(name);
   return `import mongoose from "mongoose";
 import { I${pascalName} } from "./${name}.typing";

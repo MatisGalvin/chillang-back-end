@@ -1,4 +1,4 @@
-export const swaggerTemplate = () => {
+export default (name: string) => {
   return `const EX = {
   readAll: [],
   create: { _id: "" },

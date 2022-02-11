@@ -1,6 +1,6 @@
 import { toPascalCase } from "../../utils.script";
 
-export const serviceTemplate = (name: string) => {
+export default (name: string) => {
   const pascalName = toPascalCase(name);
 
   return `import { ${pascalName}Model } from "./${name}.model";

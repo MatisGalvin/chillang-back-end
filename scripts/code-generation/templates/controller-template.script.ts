@@ -1,5 +1,5 @@
 import { toPascalCase, camelCaseToSentence } from "../../utils.script";
-export const controllerTemplate = (name: string) => {
+export default (name: string) => {
   const namePascal = toPascalCase(name);
   return `import { ${namePascal}Service } from "./${name}.service";
 import { I${namePascal}, I${namePascal}Doc } from "./${name}.typing";

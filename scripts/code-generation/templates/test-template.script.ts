@@ -1,11 +1,11 @@
 import { toPascalCase } from "../../utils.script";
 
-export const testTemplate = (name: string) => {
+export default (name: string) => {
   const namePascal = toPascalCase(name);
   return `import supertest from "supertest";
-import { Server } from "../server";
-import { ${namePascal}Model } from "../api/${name}/${name}.model";
-import { I${namePascal}, I${namePascal}Doc } from "../api/${name}/${name}.typing";
+import { Server } from "../../server";
+import { ${namePascal}Model } from "./${name}.model";
+import { I${namePascal}Doc } from "./${name}.typing";
 
 const server = new Server().getExpressInstance();
 describe("${namePascal} API", () => {

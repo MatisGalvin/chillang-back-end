@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { IPage, IPagePopulatedDoc } from "./page.typing";
+import { IPage } from "./page.typing";
 
 const Schema = mongoose.Schema;
 

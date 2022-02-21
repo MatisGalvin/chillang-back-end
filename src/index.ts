@@ -8,7 +8,7 @@ import {
 } from "./config/dev.config";
 import { mongooseConfig as mongooseConfigTest } from "./config/test.config";
 
-console.log("Environment: ", process.env.NODE_ENV);
+// console.log("Environment: ", process.env);
 /**
  * In order to set fake data in the DB, you can change the value of SET_DB_FAKE_DATA.
  * DB_NAME will have 2 possible values : "testDatabase" in test mode or "chillangDatabase" in normal mode

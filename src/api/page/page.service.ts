@@ -1,6 +1,6 @@
 import { ITranslationFileDoc } from "../translationFile/translationFile.typing";
 import { PageModel } from "./page.model";
-import { IPage, IPageDoc, IPagePopulatedDoc } from "./page.typing";
+import { IPage } from "./page.typing";
 
 export const PageService = {
   create: async (body: IPage) => {

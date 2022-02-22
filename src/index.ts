@@ -2,9 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const testEnv = require("dotenv").config({
-  path: `.env.test`,
-}).parsed;
+console.log("process.env", process.env);
 
 import { Server } from "./server";
 import { Mongoose } from "./mongoose";
@@ -19,7 +17,7 @@ import { SET_DB_WITH_FAKE_DATA } from "./config/config";
 
 const mongooseDB = new Mongoose(
   process.env.NODE_ENV !== "production" && SET_DB_WITH_FAKE_DATA
-    ? `${testEnv.DB_URL}${testEnv.DB_NAME}`
+    ? `${process.env.DB_URL}${process.env.DB_NAME_FAKE_DATA}`
     : `${process.env.DB_URL}${process.env.DB_NAME}`
 );
 

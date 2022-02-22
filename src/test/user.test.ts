@@ -2,7 +2,6 @@ import supertest from "supertest";
 import mongoose from "mongoose";
 import { UserModel } from "../api/user/user.model";
 import { IUser } from "../api/user/user.typing";
-import { mongooseConfig } from "../config/dev.config";
 import { Server } from "../server";
 // We don't start the server, this way supertest start it itself on an available port
 const server = new Server().getExpressInstance();

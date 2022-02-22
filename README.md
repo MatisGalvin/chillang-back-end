@@ -13,6 +13,8 @@ Run tests :
 
 Run server :
 `npm start`
+You can switch between development mode or production mode by setting the NOVE-ENV
+in the package.JSON.
 
 ## Realize a dump
 

@@ -5,7 +5,7 @@ import morgan from "morgan";
 import { checkMongooseParamsIDIsValid } from "../middlewares/expressMiddlewares";
 import * as swaggerUI from "swagger-ui-express";
 import { RegisterRoutes } from "../../routes";
-import { SWAGGER_DOC_URL } from "../config/dev.config";
+import { SWAGGER_DOC_URL } from "../config/config";
 import { AddressInfo } from "net";
 
 const swaggerDocument = require("../../swagger.json");
@@ -19,10 +19,10 @@ const cors = require("cors");
 export class Server {
   expressServer: Express;
   server: HttpServer;
-  port: number;
+  port: string;
   showLog: boolean;
 
-  constructor(port?: number, showLog = true) {
+  constructor(port?: string, showLog = true) {
     if (port) {
       this.port = port;
     }

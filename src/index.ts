@@ -1,30 +1,33 @@
-import "dotenv/config";
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+const testEnv = require("dotenv").config({
+  path: `.env.test`,
+}).parsed;
+
 import { Server } from "./server";
 import { Mongoose } from "./mongoose";
-import {
-  mongooseConfig,
-  serverConfig,
-  SET_DB_WITH_FAKE_DATA,
-} from "./config/dev.config";
-import { mongooseConfig as mongooseConfigTest } from "./config/test.config";
+import { SET_DB_WITH_FAKE_DATA } from "./config/config";
 
-// console.log("Environment: ", process.env);
 /**
  * In order to set fake data in the DB, you can change the value of SET_DB_FAKE_DATA.
- * DB_NAME will have 2 possible values : "testDatabase" in test mode or "chillangDatabase" in normal mode
+ * DB_NAME DB_URL and SERVER_PORT are set using NODE_ENV value.
+ * For each value of NODE_ENV (set in the package.JSON), DB_NAME DB_URL and SERVER_PORT are setting with the
+ * data in the file named .env.${NODE_ENV}
  */
 
 const mongooseDB = new Mongoose(
-  SET_DB_WITH_FAKE_DATA
-    ? `${mongooseConfigTest.DB_URL}${mongooseConfigTest.DB_NAME}`
-    : `${mongooseConfig.DB_URL}${mongooseConfig.DB_NAME}`
+  process.env.NODE_ENV !== "production" && SET_DB_WITH_FAKE_DATA
+    ? `${testEnv.DB_URL}${testEnv.DB_NAME}`
+    : `${process.env.DB_URL}${process.env.DB_NAME}`
 );
 
 mongooseDB.connect(() => {
-  if (SET_DB_WITH_FAKE_DATA) {
+  if (process.env.NODE_ENV !== "production" && SET_DB_WITH_FAKE_DATA) {
     mongooseDB.setFakeDatabase();
   }
 });
 
-const server = new Server(serverConfig.PORT);
+const server = new Server(process.env.SERVER_PORT);
 server.start();
